@@ -1,0 +1,26 @@
+SQL> create table student(rollno number,name varchar,adress varchar);
+create table student(rollno number,name varchar,adress varchar)
+                                               *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> create table student(rollno number,name varchar,address varchar);
+create table student(rollno number,name varchar,address varchar)
+                                               *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> create table student(rollno number,name varchar(),address varchar());
+create table student(rollno number,name varchar(),address varchar())
+                                                *
+ERROR at line 1:
+ORA-00910: specified length too long for its datatype 
+
+
+SQL> create table student(rollno number,name varchar(20),address varchar(20));
+
+Table created.
+
+SQL>  exit

@@ -1,0 +1,195 @@
+SQL> show tables;
+SP2-0158: unknown SHOW option "tables"
+SQL> show table;
+SP2-0158: unknown SHOW option "table"
+SQL> show table;
+SP2-0158: unknown SHOW option "table"
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENT                        TABLE                                            
+
+SQL> drop student;
+drop student
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> drop student;
+drop student
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> create table student(rollno number(5) constraint rollpk primary key,name varchar(20) not null,address varchar(20)not null,gender char(5),DOB date,email varchar(20)unique);
+
+Table created.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLLNO                                    NOT NULL NUMBER(5)
+ NAME                                      NOT NULL VARCHAR2(20)
+ ADDRESS                                   NOT NULL VARCHAR2(20)
+ GENDER                                             CHAR(5)
+ DOB                                                DATE
+ EMAIL                                              VARCHAR2(20)
+
+SQL> insert into student values(1,'bhagyashri','pune','f','05/09/1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','05/09/1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','05sept1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','05sept1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01841: (full) year must be between -4713 and +9999, and not be 0 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','05-09-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','05-09-1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','05-sept-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','05-sept-1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01841: (full) year must be between -4713 and +9999, and not be 0 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','1995-9-5','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','1995-9-5','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01861: literal does not match format string 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','9-5-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','9-5-1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','sept-5-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','sept-5-1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','09-05-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','09-05-1995','bhagyashrisurya57@gmail.com')
+                                                     *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> current date;
+SP2-0734: unknown command beginning "current da..." - rest of line ignored.
+SQL> insert into student values(1,'bhagyashri','pune','f','09-sep-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','09-sep-1995','bhagyashrisurya57@gmail.com')
+                                                                   *
+ERROR at line 1:
+ORA-12899: value too large for column "BHAGYASHRI"."STUDENT"."EMAIL" (actual: 
+27, maximum: 20) 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','05-sep-1995','bhagyashrisurya57@gmail.com');
+insert into student values(1,'bhagyashri','pune','f','05-sep-1995','bhagyashrisurya57@gmail.com')
+                                                                   *
+ERROR at line 1:
+ORA-12899: value too large for column "BHAGYASHRI"."STUDENT"."EMAIL" (actual: 
+27, maximum: 20) 
+
+
+SQL> insert into student values(1,'bhagyashri','pune','f','05-sep-1995','bhagyashri@gmail.com');
+
+1 row created.
+
+SQL> insert into student values(1,'aish','pune','f','09-apr-1995','aish@gmail.com');
+insert into student values(1,'aish','pune','f','09-apr-1995','aish@gmail.com')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (BHAGYASHRI.ROLLPK) violated 
+
+
+SQL> insert into student values(2,'aish','pune','f','09-apr-1995','aish@gmail.com');
+
+1 row created.
+
+SQL> edit  student;
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> create table student(rollno number(5) ,sem varchar(20),name varchar(20) not null,address varchar(20)not null,gender char(5),DOB date,email varchar(20)unique,constraint rlpk,sempk primary key(rollno,sem));
+create table student(rollno number(5) ,sem varchar(20),name varchar(20) not null,address varchar(20)not null,gender char(5),DOB date,email varchar(20)unique,constraint rlpk,sempk primary key(rollno,sem))
+                                                                                                                                                                            *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> create table student(rollno number(5) ,sem varchar(20),name varchar(20) not null,address varchar(20)not null,gender char(5),DOB date,email varchar(20)unique,constraint rm primary key(rollno,sem));
+
+Table created.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLLNO                                    NOT NULL NUMBER(5)
+ SEM                                       NOT NULL VARCHAR2(20)
+ NAME                                      NOT NULL VARCHAR2(20)
+ ADDRESS                                   NOT NULL VARCHAR2(20)
+ GENDER                                             CHAR(5)
+ DOB                                                DATE
+ EMAIL                                              VARCHAR2(20)
+
+SQL> edit student1;
+
+SQL> @student1
+SP2-0042: unknown command ")" - rest of line ignored.
+  rollno number(2),name varchar(20)
+                                  *
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> @student1;
+SP2-0042: unknown command ")" - rest of line ignored.
+  rollno number(2),name varchar(20)
+                                  *
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> edit student1;
+
+SQL> @student1
+
+Table created.
+
+SQL> @student1;
+create table student1
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> edit student1;
+
+SQL> exit

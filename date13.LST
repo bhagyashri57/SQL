@@ -1,0 +1,170 @@
+
+SQL> create table employee(empid number(2) primary key,ename varchar(20)not null,designation varchar(20)not null);
+
+Table created.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(2)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGNATION                               NOT NULL VARCHAR2(20)
+
+
+SQL> alter table employee add salary decimal(2,3);
+
+Table altered.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(2)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGNATION                               NOT NULL VARCHAR2(20)
+ SALARY                                             NUMBER(2,3)
+
+
+
+
+SQL> alter table employee add constraint ename1 unique(ename);
+
+Table altered.
+
+
+SQL> alter table employee add constraint ep1  unique(designation,salary);
+
+Table altered.
+
+SQL> alter table employee drop constraint unique(salary);
+alter table employee drop constraint unique(salary)
+                                     *
+ERROR at line 1:
+ORA-02250: missing or invalid constraint name 
+
+
+
+
+SQL> alter table employee drop constraint ep1;
+
+Table altered.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(2)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGNATION                               NOT NULL VARCHAR2(20)
+ SALARY                                             NUMBER(2,3)
+
+
+SQL> alter table employee drop column salary;
+
+Table altered.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(2)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGNATION                               NOT NULL VARCHAR2(20)
+
+
+SQL> insert into employee values(1,'bhagyashri','sofetware ');
+
+1 row created.
+
+
+SQL> insert into employee values(2,'aish','software ');
+
+1 row created.
+
+SQL> select * from employee;
+
+     EMPID ENAME                DESIGNATION                                     
+---------- -------------------- --------------------                            
+         1 bhagyashri           sofetware                                       
+         2 aish                 software                                        
+
+SQL> delete from employee where empid=2;
+
+1 row deleted.
+
+SQL> select * from employee;
+
+     EMPID ENAME                DESIGNATION                                     
+---------- -------------------- --------------------                            
+         1 bhagyashri           sofetware                                       
+
+SQL> truncate table employee;
+
+Table truncated.
+
+SQL> select * from employee;
+
+no rows selected
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(2)
+ ENAME                                     NOT NULL VARCHAR2(20)
+ DESIGNATION                               NOT NULL VARCHAR2(20)
+
+SQL> select empid as employee_id from employee;
+
+no rows selected
+
+SQL> insert into employee values(1,'bhagyashri','sofetware ');
+
+1 row created.
+
+SQL> insert into employee values(2,'aish,'software ');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into employee values(2,'aish','software ');
+
+1 row created.
+
+SQL> select empid as employee_id from employee;
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+          1                                                                     
+          2                                                                     
+
+SQL> select empid as employee Id from employee;
+select empid as employee Id from employee
+                         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> set @Employee_Id=select empid from employee;
+SP2-0735: unknown SET option beginning "@Employee_..."
+SQL> set @Employee_Id:=select empid from employee;
+SP2-0735: unknown SET option beginning "@Employee_..."
+
+
+SQL> drop table employee;
+
+Table dropped.
+
+SQL> desc employee;
+ERROR:
+ORA-04043: object employee does not exist 
+
+
+SQL> drop user bhagyashri cascade;
+drop user bhagyashri cascade
+*
+ERROR at line 1:
+ORA-01940: cannot drop a user that is currently connected 
+
+
+SQL> alter user bhagyashri identified by bhagya57;
+
+User altered.
+
+SQL> exit

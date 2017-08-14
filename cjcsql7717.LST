@@ -1,0 +1,57 @@
+SQL> insert into student values({345,'vivek'},{564,'vaibhav});
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into student values({345,'vivek'},{564,'vaibhav});
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into student values({345,'vivek'},{564,'vaibhav})
+  2  ;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLL_NO                                            NUMBER
+ NAME                                               VARCHAR2(20)
+
+SQL> select * from student;
+
+   ROLL_NO NAME                                                                 
+---------- --------------------                                                 
+         1 abc                                                                  
+         2 bcd                                                                  
+         3 bhagyshri                                                            
+         4 neha                                                                 
+         5 vico                                                                 
+         6 raj                                                                  
+         7 akhil                                                                
+         8 madhuri                                                              
+         9 swammi                                                               
+       124 gaurav                                                               
+
+10 rows selected.
+
+SQL> insert into student values({122,'dffds'},)
+  2  ;}
+  3  ;
+insert into student values({122,'dffds'},)
+                           *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into student values({122,'dffds'},
+  2  {567,'mkkm'});
+insert into student values({122,'dffds'},
+                           *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> exit

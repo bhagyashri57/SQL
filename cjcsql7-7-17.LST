@@ -1,0 +1,22 @@
+SQL> insert into student values(124,'gaurav');
+
+1 row created.
+
+SQL> select * from student;
+
+   ROLL_NO NAME                                                                 
+---------- --------------------                                                 
+         1 abc                                                                  
+         2 bcd                                                                  
+         3 bhagyshri                                                            
+         4 neha                                                                 
+         5 vico                                                                 
+         6 raj                                                                  
+         7 akhil                                                                
+         8 madhuri                                                              
+         9 swammi                                                               
+       124 gaurav                                                               
+
+10 rows selected.
+
+SQL> exit

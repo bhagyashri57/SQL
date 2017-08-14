@@ -1,0 +1,2362 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+REGIONS                        TABLE                                            
+COUNTRIES                      TABLE                                            
+LOCATIONS                      TABLE                                            
+DEPARTMENTS                    TABLE                                            
+JOBS                           TABLE                                            
+EMPLOYEES                      TABLE                                            
+JOB_HISTORY                    TABLE                                            
+EMP_DETAILS_VIEW               VIEW                                             
+
+8 rows selected.
+
+SQL> select employee_id from employees;
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        100                                                                     
+        101                                                                     
+        102                                                                     
+        103                                                                     
+        104                                                                     
+        105                                                                     
+        106                                                                     
+        107                                                                     
+        108                                                                     
+        109                                                                     
+        110                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        111                                                                     
+        112                                                                     
+        113                                                                     
+        114                                                                     
+        115                                                                     
+        116                                                                     
+        117                                                                     
+        118                                                                     
+        119                                                                     
+        120                                                                     
+        121                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        122                                                                     
+        123                                                                     
+        124                                                                     
+        125                                                                     
+        126                                                                     
+        127                                                                     
+        128                                                                     
+        129                                                                     
+        130                                                                     
+        131                                                                     
+        132                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        133                                                                     
+        134                                                                     
+        135                                                                     
+        136                                                                     
+        137                                                                     
+        138                                                                     
+        139                                                                     
+        140                                                                     
+        141                                                                     
+        142                                                                     
+        143                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        144                                                                     
+        145                                                                     
+        146                                                                     
+        147                                                                     
+        148                                                                     
+        149                                                                     
+        150                                                                     
+        151                                                                     
+        152                                                                     
+        153                                                                     
+        154                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        155                                                                     
+        156                                                                     
+        157                                                                     
+        158                                                                     
+        159                                                                     
+        160                                                                     
+        161                                                                     
+        162                                                                     
+        163                                                                     
+        164                                                                     
+        165                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        166                                                                     
+        167                                                                     
+        168                                                                     
+        169                                                                     
+        170                                                                     
+        171                                                                     
+        172                                                                     
+        173                                                                     
+        174                                                                     
+        175                                                                     
+        176                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        177                                                                     
+        178                                                                     
+        179                                                                     
+        180                                                                     
+        181                                                                     
+        182                                                                     
+        183                                                                     
+        184                                                                     
+        185                                                                     
+        186                                                                     
+        187                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        188                                                                     
+        189                                                                     
+        190                                                                     
+        191                                                                     
+        192                                                                     
+        193                                                                     
+        194                                                                     
+        195                                                                     
+        196                                                                     
+        197                                                                     
+        198                                                                     
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        199                                                                     
+        200                                                                     
+        201                                                                     
+        202                                                                     
+        203                                                                     
+        204                                                                     
+        205                                                                     
+        206                                                                     
+
+107 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> select salary from employees;
+
+    SALARY                                                                      
+----------                                                                      
+     24000                                                                      
+     17000                                                                      
+     17000                                                                      
+      9000                                                                      
+      6000                                                                      
+      4800                                                                      
+      4800                                                                      
+      4200                                                                      
+     12000                                                                      
+      9000                                                                      
+      8200                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      7700                                                                      
+      7800                                                                      
+      6900                                                                      
+     11000                                                                      
+      3100                                                                      
+      2900                                                                      
+      2800                                                                      
+      2600                                                                      
+      2500                                                                      
+      8000                                                                      
+      8200                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      7900                                                                      
+      6500                                                                      
+      5800                                                                      
+      3200                                                                      
+      2700                                                                      
+      2400                                                                      
+      2200                                                                      
+      3300                                                                      
+      2800                                                                      
+      2500                                                                      
+      2100                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      3300                                                                      
+      2900                                                                      
+      2400                                                                      
+      2200                                                                      
+      3600                                                                      
+      3200                                                                      
+      2700                                                                      
+      2500                                                                      
+      3500                                                                      
+      3100                                                                      
+      2600                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      2500                                                                      
+     14000                                                                      
+     13500                                                                      
+     12000                                                                      
+     11000                                                                      
+     10500                                                                      
+     10000                                                                      
+      9500                                                                      
+      9000                                                                      
+      8000                                                                      
+      7500                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      7000                                                                      
+     10000                                                                      
+      9500                                                                      
+      9000                                                                      
+      8000                                                                      
+      7500                                                                      
+      7000                                                                      
+     10500                                                                      
+      9500                                                                      
+      7200                                                                      
+      6800                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      6400                                                                      
+      6200                                                                      
+     11500                                                                      
+     10000                                                                      
+      9600                                                                      
+      7400                                                                      
+      7300                                                                      
+      6100                                                                      
+     11000                                                                      
+      8800                                                                      
+      8600                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      8400                                                                      
+      7000                                                                      
+      6200                                                                      
+      3200                                                                      
+      3100                                                                      
+      2500                                                                      
+      2800                                                                      
+      4200                                                                      
+      4100                                                                      
+      3400                                                                      
+      3000                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      3800                                                                      
+      3600                                                                      
+      2900                                                                      
+      2500                                                                      
+      4000                                                                      
+      3900                                                                      
+      3200                                                                      
+      2800                                                                      
+      3100                                                                      
+      3000                                                                      
+      2600                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      2600                                                                      
+      4400                                                                      
+     13000                                                                      
+      6000                                                                      
+      6500                                                                      
+     10000                                                                      
+     12000                                                                      
+      8300                                                                      
+
+107 rows selected.
+
+SQL> select * from employees where salary=5000;
+
+no rows selected
+
+SQL> select * from employees where salary=3000;
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+        187 Anthony              Cabrio                                         
+ACABRIO                   650.509.4876         07-FEB-99 SH_CLERK         3000  
+                      121            50                                         
+                                                                                
+        197 Kevin                Feeney                                         
+KFEENEY                   650.507.9822         23-MAY-98 SH_CLERK         3000  
+                      124            50                                         
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+                                                                                
+
+SQL> select first_name from employees where salary=3000;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Anthony                                                                         
+Kevin                                                                           
+
+SQL> select first_name from employees where salary=3000 or salary=6000;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Bruce                                                                           
+Anthony                                                                         
+Kevin                                                                           
+Pat                                                                             
+
+SQL> select first_name from employees where salary=3000 and first_name='pat';
+
+no rows selected
+
+SQL> select first_name from employees where salary=3000 and first_name='Pat';
+
+no rows selected
+
+SQL> select first_name from employees where salary=6000 and first_name='Pat';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Pat                                                                             
+
+SQL> select first_name from employees where salary in(6000,3000,2600,6500);
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Bruce                                                                           
+Guy                                                                             
+Shanta                                                                          
+Randall                                                                         
+Anthony                                                                         
+Kevin                                                                           
+Donald                                                                          
+Douglas                                                                         
+Pat                                                                             
+Susan                                                                           
+
+10 rows selected.
+
+SQL> select first_name from employees where salary notin(6000,3000,2600,6500);
+select first_name from employees where salary notin(6000,3000,2600,6500)
+                                              *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select first_name from employees where salary not in(6000,3000,2600,6500);
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Steven                                                                          
+Neena                                                                           
+Lex                                                                             
+Alexander                                                                       
+David                                                                           
+Valli                                                                           
+Diana                                                                           
+Nancy                                                                           
+Daniel                                                                          
+John                                                                            
+Ismael                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jose Manuel                                                                     
+Luis                                                                            
+Den                                                                             
+Alexander                                                                       
+Shelli                                                                          
+Sigal                                                                           
+Karen                                                                           
+Matthew                                                                         
+Adam                                                                            
+Payam                                                                           
+Kevin                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Julia                                                                           
+Irene                                                                           
+James                                                                           
+Steven                                                                          
+Laura                                                                           
+Mozhe                                                                           
+James                                                                           
+TJ                                                                              
+Jason                                                                           
+Michael                                                                         
+Ki                                                                              
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Hazel                                                                           
+Renske                                                                          
+Stephen                                                                         
+John                                                                            
+Joshua                                                                          
+Trenna                                                                          
+Curtis                                                                          
+Peter                                                                           
+John                                                                            
+Karen                                                                           
+Alberto                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Gerald                                                                          
+Eleni                                                                           
+Peter                                                                           
+David                                                                           
+Peter                                                                           
+Christopher                                                                     
+Nanette                                                                         
+Oliver                                                                          
+Janette                                                                         
+Patrick                                                                         
+Allan                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Lindsey                                                                         
+Louise                                                                          
+Sarath                                                                          
+Clara                                                                           
+Danielle                                                                        
+Mattea                                                                          
+David                                                                           
+Sundar                                                                          
+Amit                                                                            
+Lisa                                                                            
+Harrison                                                                        
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Tayler                                                                          
+William                                                                         
+Elizabeth                                                                       
+Sundita                                                                         
+Ellen                                                                           
+Alyssa                                                                          
+Jonathon                                                                        
+Jack                                                                            
+Kimberely                                                                       
+Charles                                                                         
+Winston                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jean                                                                            
+Martha                                                                          
+Girard                                                                          
+Nandita                                                                         
+Alexis                                                                          
+Julia                                                                           
+Kelly                                                                           
+Jennifer                                                                        
+Timothy                                                                         
+Randall                                                                         
+Sarah                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Britney                                                                         
+Samuel                                                                          
+Vance                                                                           
+Alana                                                                           
+Jennifer                                                                        
+Michael                                                                         
+Hermann                                                                         
+Shelley                                                                         
+William                                                                         
+
+97 rows selected.
+
+SQL> select first_name from employees where name like 'a%';
+select first_name from employees where name like 'a%'
+                                       *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select first_name from employees where first_name like 'a%';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like 'A%';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Amit                                                                            
+Alexis                                                                          
+Anthony                                                                         
+Alberto                                                                         
+Adam                                                                            
+Alexander                                                                       
+Alyssa                                                                          
+Alexander                                                                       
+Allan                                                                           
+Alana                                                                           
+
+10 rows selected.
+
+SQL> select first_name from employees where first_name like '[A-j]%';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like '[A-J]%';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like '_A%';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like '_a%';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+David                                                                           
+Sarah                                                                           
+David                                                                           
+Laura                                                                           
+Harrison                                                                        
+Nanette                                                                         
+Karen                                                                           
+Daniel                                                                          
+Pat                                                                             
+Tayler                                                                          
+Nancy                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Danielle                                                                        
+Vance                                                                           
+Payam                                                                           
+Janette                                                                         
+James                                                                           
+David                                                                           
+Jack                                                                            
+Jason                                                                           
+James                                                                           
+Mattea                                                                          
+Randall                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Samuel                                                                          
+Karen                                                                           
+Valli                                                                           
+Randall                                                                         
+Hazel                                                                           
+Nandita                                                                         
+Sarath                                                                          
+Martha                                                                          
+Patrick                                                                         
+Matthew                                                                         
+
+32 rows selected.
+
+SQL> select first_name from employees where first_name like '[A-j] % ';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like '[A-J] % ';
+
+no rows selected
+
+SQL> select first_name from employees where first_name not like 'A% ';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Ellen                                                                           
+Sundar                                                                          
+Mozhe                                                                           
+David                                                                           
+Hermann                                                                         
+Shelli                                                                          
+Amit                                                                            
+Elizabeth                                                                       
+Sarah                                                                           
+David                                                                           
+Laura                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Harrison                                                                        
+Alexis                                                                          
+Anthony                                                                         
+Gerald                                                                          
+Nanette                                                                         
+John                                                                            
+Kelly                                                                           
+Karen                                                                           
+Curtis                                                                          
+Lex                                                                             
+Julia                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jennifer                                                                        
+Louise                                                                          
+Bruce                                                                           
+Alberto                                                                         
+Britney                                                                         
+Daniel                                                                          
+Pat                                                                             
+Kevin                                                                           
+Jean                                                                            
+Tayler                                                                          
+Adam                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Timothy                                                                         
+Ki                                                                              
+Girard                                                                          
+William                                                                         
+Douglas                                                                         
+Kimberely                                                                       
+Nancy                                                                           
+Danielle                                                                        
+Peter                                                                           
+Michael                                                                         
+Shelley                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Guy                                                                             
+Alexander                                                                       
+Alyssa                                                                          
+Charles                                                                         
+Vance                                                                           
+Payam                                                                           
+Alexander                                                                       
+Janette                                                                         
+Steven                                                                          
+Neena                                                                           
+Sundita                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Renske                                                                          
+James                                                                           
+David                                                                           
+Jack                                                                            
+Diana                                                                           
+Jason                                                                           
+Steven                                                                          
+James                                                                           
+Mattea                                                                          
+Randall                                                                         
+Susan                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Samuel                                                                          
+Allan                                                                           
+Irene                                                                           
+Kevin                                                                           
+Julia                                                                           
+Donald                                                                          
+Christopher                                                                     
+TJ                                                                              
+Lisa                                                                            
+Karen                                                                           
+Valli                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Joshua                                                                          
+Randall                                                                         
+Hazel                                                                           
+Luis                                                                            
+Trenna                                                                          
+Den                                                                             
+Michael                                                                         
+John                                                                            
+Nandita                                                                         
+Ismael                                                                          
+John                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Sarath                                                                          
+Lindsey                                                                         
+William                                                                         
+Stephen                                                                         
+Martha                                                                          
+Patrick                                                                         
+Jonathon                                                                        
+Winston                                                                         
+Sigal                                                                           
+Peter                                                                           
+Oliver                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jose Manuel                                                                     
+Peter                                                                           
+Clara                                                                           
+Shanta                                                                          
+Alana                                                                           
+Matthew                                                                         
+Jennifer                                                                        
+Eleni                                                                           
+
+107 rows selected.
+
+SQL> select first_name from employees where first_name not like 'A-J% ';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Ellen                                                                           
+Sundar                                                                          
+Mozhe                                                                           
+David                                                                           
+Hermann                                                                         
+Shelli                                                                          
+Amit                                                                            
+Elizabeth                                                                       
+Sarah                                                                           
+David                                                                           
+Laura                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Harrison                                                                        
+Alexis                                                                          
+Anthony                                                                         
+Gerald                                                                          
+Nanette                                                                         
+John                                                                            
+Kelly                                                                           
+Karen                                                                           
+Curtis                                                                          
+Lex                                                                             
+Julia                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jennifer                                                                        
+Louise                                                                          
+Bruce                                                                           
+Alberto                                                                         
+Britney                                                                         
+Daniel                                                                          
+Pat                                                                             
+Kevin                                                                           
+Jean                                                                            
+Tayler                                                                          
+Adam                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Timothy                                                                         
+Ki                                                                              
+Girard                                                                          
+William                                                                         
+Douglas                                                                         
+Kimberely                                                                       
+Nancy                                                                           
+Danielle                                                                        
+Peter                                                                           
+Michael                                                                         
+Shelley                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Guy                                                                             
+Alexander                                                                       
+Alyssa                                                                          
+Charles                                                                         
+Vance                                                                           
+Payam                                                                           
+Alexander                                                                       
+Janette                                                                         
+Steven                                                                          
+Neena                                                                           
+Sundita                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Renske                                                                          
+James                                                                           
+David                                                                           
+Jack                                                                            
+Diana                                                                           
+Jason                                                                           
+Steven                                                                          
+James                                                                           
+Mattea                                                                          
+Randall                                                                         
+Susan                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Samuel                                                                          
+Allan                                                                           
+Irene                                                                           
+Kevin                                                                           
+Julia                                                                           
+Donald                                                                          
+Christopher                                                                     
+TJ                                                                              
+Lisa                                                                            
+Karen                                                                           
+Valli                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Joshua                                                                          
+Randall                                                                         
+Hazel                                                                           
+Luis                                                                            
+Trenna                                                                          
+Den                                                                             
+Michael                                                                         
+John                                                                            
+Nandita                                                                         
+Ismael                                                                          
+John                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Sarath                                                                          
+Lindsey                                                                         
+William                                                                         
+Stephen                                                                         
+Martha                                                                          
+Patrick                                                                         
+Jonathon                                                                        
+Winston                                                                         
+Sigal                                                                           
+Peter                                                                           
+Oliver                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jose Manuel                                                                     
+Peter                                                                           
+Clara                                                                           
+Shanta                                                                          
+Alana                                                                           
+Matthew                                                                         
+Jennifer                                                                        
+Eleni                                                                           
+
+107 rows selected.
+
+SQL> select first_name from employees where first_name like 'A-J% ';
+
+no rows selected
+
+SQL> select first_name from employees where first_name not like 'A-J% ';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Ellen                                                                           
+Sundar                                                                          
+Mozhe                                                                           
+David                                                                           
+Hermann                                                                         
+Shelli                                                                          
+Amit                                                                            
+Elizabeth                                                                       
+Sarah                                                                           
+David                                                                           
+Laura                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Harrison                                                                        
+Alexis                                                                          
+Anthony                                                                         
+Gerald                                                                          
+Nanette                                                                         
+John                                                                            
+Kelly                                                                           
+Karen                                                                           
+Curtis                                                                          
+Lex                                                                             
+Julia                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jennifer                                                                        
+Louise                                                                          
+Bruce                                                                           
+Alberto                                                                         
+Britney                                                                         
+Daniel                                                                          
+Pat                                                                             
+Kevin                                                                           
+Jean                                                                            
+Tayler                                                                          
+Adam                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Timothy                                                                         
+Ki                                                                              
+Girard                                                                          
+William                                                                         
+Douglas                                                                         
+Kimberely                                                                       
+Nancy                                                                           
+Danielle                                                                        
+Peter                                                                           
+Michael                                                                         
+Shelley                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Guy                                                                             
+Alexander                                                                       
+Alyssa                                                                          
+Charles                                                                         
+Vance                                                                           
+Payam                                                                           
+Alexander                                                                       
+Janette                                                                         
+Steven                                                                          
+Neena                                                                           
+Sundita                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Renske                                                                          
+James                                                                           
+David                                                                           
+Jack                                                                            
+Diana                                                                           
+Jason                                                                           
+Steven                                                                          
+James                                                                           
+Mattea                                                                          
+Randall                                                                         
+Susan                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Samuel                                                                          
+Allan                                                                           
+Irene                                                                           
+Kevin                                                                           
+Julia                                                                           
+Donald                                                                          
+Christopher                                                                     
+TJ                                                                              
+Lisa                                                                            
+Karen                                                                           
+Valli                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Joshua                                                                          
+Randall                                                                         
+Hazel                                                                           
+Luis                                                                            
+Trenna                                                                          
+Den                                                                             
+Michael                                                                         
+John                                                                            
+Nandita                                                                         
+Ismael                                                                          
+John                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Sarath                                                                          
+Lindsey                                                                         
+William                                                                         
+Stephen                                                                         
+Martha                                                                          
+Patrick                                                                         
+Jonathon                                                                        
+Winston                                                                         
+Sigal                                                                           
+Peter                                                                           
+Oliver                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jose Manuel                                                                     
+Peter                                                                           
+Clara                                                                           
+Shanta                                                                          
+Alana                                                                           
+Matthew                                                                         
+Jennifer                                                                        
+Eleni                                                                           
+
+107 rows selected.
+
+SQL> select first_name from employees where first_name not like '[A_J]% ';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Ellen                                                                           
+Sundar                                                                          
+Mozhe                                                                           
+David                                                                           
+Hermann                                                                         
+Shelli                                                                          
+Amit                                                                            
+Elizabeth                                                                       
+Sarah                                                                           
+David                                                                           
+Laura                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Harrison                                                                        
+Alexis                                                                          
+Anthony                                                                         
+Gerald                                                                          
+Nanette                                                                         
+John                                                                            
+Kelly                                                                           
+Karen                                                                           
+Curtis                                                                          
+Lex                                                                             
+Julia                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jennifer                                                                        
+Louise                                                                          
+Bruce                                                                           
+Alberto                                                                         
+Britney                                                                         
+Daniel                                                                          
+Pat                                                                             
+Kevin                                                                           
+Jean                                                                            
+Tayler                                                                          
+Adam                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Timothy                                                                         
+Ki                                                                              
+Girard                                                                          
+William                                                                         
+Douglas                                                                         
+Kimberely                                                                       
+Nancy                                                                           
+Danielle                                                                        
+Peter                                                                           
+Michael                                                                         
+Shelley                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Guy                                                                             
+Alexander                                                                       
+Alyssa                                                                          
+Charles                                                                         
+Vance                                                                           
+Payam                                                                           
+Alexander                                                                       
+Janette                                                                         
+Steven                                                                          
+Neena                                                                           
+Sundita                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Renske                                                                          
+James                                                                           
+David                                                                           
+Jack                                                                            
+Diana                                                                           
+Jason                                                                           
+Steven                                                                          
+James                                                                           
+Mattea                                                                          
+Randall                                                                         
+Susan                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Samuel                                                                          
+Allan                                                                           
+Irene                                                                           
+Kevin                                                                           
+Julia                                                                           
+Donald                                                                          
+Christopher                                                                     
+TJ                                                                              
+Lisa                                                                            
+Karen                                                                           
+Valli                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Joshua                                                                          
+Randall                                                                         
+Hazel                                                                           
+Luis                                                                            
+Trenna                                                                          
+Den                                                                             
+Michael                                                                         
+John                                                                            
+Nandita                                                                         
+Ismael                                                                          
+John                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Sarath                                                                          
+Lindsey                                                                         
+William                                                                         
+Stephen                                                                         
+Martha                                                                          
+Patrick                                                                         
+Jonathon                                                                        
+Winston                                                                         
+Sigal                                                                           
+Peter                                                                           
+Oliver                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jose Manuel                                                                     
+Peter                                                                           
+Clara                                                                           
+Shanta                                                                          
+Alana                                                                           
+Matthew                                                                         
+Jennifer                                                                        
+Eleni                                                                           
+
+107 rows selected.
+
+SQL> select first_name from employees where first_name like '[A_J]% ';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like 'J% ';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like 'J%';
+
+FIRST_NAME                                                                      
+--------------------                                                            
+John                                                                            
+Julia                                                                           
+Jennifer                                                                        
+Jean                                                                            
+Janette                                                                         
+James                                                                           
+Jack                                                                            
+Jason                                                                           
+James                                                                           
+Julia                                                                           
+Joshua                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+John                                                                            
+John                                                                            
+Jonathon                                                                        
+Jose Manuel                                                                     
+Jennifer                                                                        
+
+16 rows selected.
+
+SQL> select first_name from employees where first_name like '[A_J]%';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like '[A-J]%';
+
+no rows selected
+
+SQL> select first_name from employees where first_name like '[A-J]%';
+
+no rows selected
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> select manager_id from employees;
+
+MANAGER_ID                                                                      
+----------                                                                      
+                                                                                
+       100                                                                      
+       100                                                                      
+       102                                                                      
+       103                                                                      
+       103                                                                      
+       103                                                                      
+       103                                                                      
+       101                                                                      
+       108                                                                      
+       108                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       108                                                                      
+       108                                                                      
+       108                                                                      
+       100                                                                      
+       114                                                                      
+       114                                                                      
+       114                                                                      
+       114                                                                      
+       114                                                                      
+       100                                                                      
+       100                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       100                                                                      
+       100                                                                      
+       100                                                                      
+       120                                                                      
+       120                                                                      
+       120                                                                      
+       120                                                                      
+       121                                                                      
+       121                                                                      
+       121                                                                      
+       121                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       122                                                                      
+       122                                                                      
+       122                                                                      
+       122                                                                      
+       123                                                                      
+       123                                                                      
+       123                                                                      
+       123                                                                      
+       124                                                                      
+       124                                                                      
+       124                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       124                                                                      
+       100                                                                      
+       100                                                                      
+       100                                                                      
+       100                                                                      
+       100                                                                      
+       145                                                                      
+       145                                                                      
+       145                                                                      
+       145                                                                      
+       145                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       145                                                                      
+       146                                                                      
+       146                                                                      
+       146                                                                      
+       146                                                                      
+       146                                                                      
+       146                                                                      
+       147                                                                      
+       147                                                                      
+       147                                                                      
+       147                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       147                                                                      
+       147                                                                      
+       148                                                                      
+       148                                                                      
+       148                                                                      
+       148                                                                      
+       148                                                                      
+       148                                                                      
+       149                                                                      
+       149                                                                      
+       149                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       149                                                                      
+       149                                                                      
+       149                                                                      
+       120                                                                      
+       120                                                                      
+       120                                                                      
+       120                                                                      
+       121                                                                      
+       121                                                                      
+       121                                                                      
+       121                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       122                                                                      
+       122                                                                      
+       122                                                                      
+       122                                                                      
+       123                                                                      
+       123                                                                      
+       123                                                                      
+       123                                                                      
+       124                                                                      
+       124                                                                      
+       124                                                                      
+
+MANAGER_ID                                                                      
+----------                                                                      
+       124                                                                      
+       101                                                                      
+       100                                                                      
+       201                                                                      
+       101                                                                      
+       101                                                                      
+       101                                                                      
+       205                                                                      
+
+107 rows selected.
+
+SQL> select first_name employees where manager_id is NULL;
+select first_name employees where manager_id is NULL
+                            *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select first_name from employees where manager_id is NULL;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Steven                                                                          
+
+SQL> select first_name from employees where manager_id is NOT NULL;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Neena                                                                           
+Lex                                                                             
+Alexander                                                                       
+Bruce                                                                           
+David                                                                           
+Valli                                                                           
+Diana                                                                           
+Nancy                                                                           
+Daniel                                                                          
+John                                                                            
+Ismael                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jose Manuel                                                                     
+Luis                                                                            
+Den                                                                             
+Alexander                                                                       
+Shelli                                                                          
+Sigal                                                                           
+Guy                                                                             
+Karen                                                                           
+Matthew                                                                         
+Adam                                                                            
+Payam                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Shanta                                                                          
+Kevin                                                                           
+Julia                                                                           
+Irene                                                                           
+James                                                                           
+Steven                                                                          
+Laura                                                                           
+Mozhe                                                                           
+James                                                                           
+TJ                                                                              
+Jason                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Michael                                                                         
+Ki                                                                              
+Hazel                                                                           
+Renske                                                                          
+Stephen                                                                         
+John                                                                            
+Joshua                                                                          
+Trenna                                                                          
+Curtis                                                                          
+Randall                                                                         
+Peter                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+John                                                                            
+Karen                                                                           
+Alberto                                                                         
+Gerald                                                                          
+Eleni                                                                           
+Peter                                                                           
+David                                                                           
+Peter                                                                           
+Christopher                                                                     
+Nanette                                                                         
+Oliver                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Janette                                                                         
+Patrick                                                                         
+Allan                                                                           
+Lindsey                                                                         
+Louise                                                                          
+Sarath                                                                          
+Clara                                                                           
+Danielle                                                                        
+Mattea                                                                          
+David                                                                           
+Sundar                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Amit                                                                            
+Lisa                                                                            
+Harrison                                                                        
+Tayler                                                                          
+William                                                                         
+Elizabeth                                                                       
+Sundita                                                                         
+Ellen                                                                           
+Alyssa                                                                          
+Jonathon                                                                        
+Jack                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Kimberely                                                                       
+Charles                                                                         
+Winston                                                                         
+Jean                                                                            
+Martha                                                                          
+Girard                                                                          
+Nandita                                                                         
+Alexis                                                                          
+Julia                                                                           
+Anthony                                                                         
+Kelly                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jennifer                                                                        
+Timothy                                                                         
+Randall                                                                         
+Sarah                                                                           
+Britney                                                                         
+Samuel                                                                          
+Vance                                                                           
+Alana                                                                           
+Kevin                                                                           
+Donald                                                                          
+Douglas                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jennifer                                                                        
+Michael                                                                         
+Pat                                                                             
+Susan                                                                           
+Hermann                                                                         
+Shelley                                                                         
+William                                                                         
+
+106 rows selected.
+
+SQL> select first_name from employees where first_name like '%[a-j]';
+
+no rows selected
+
+SQL> select first_name from employees order by salary;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+TJ                                                                              
+Steven                                                                          
+Hazel                                                                           
+James                                                                           
+Ki                                                                              
+Karen                                                                           
+James                                                                           
+Joshua                                                                          
+Peter                                                                           
+Martha                                                                          
+Randall                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Guy                                                                             
+Randall                                                                         
+Donald                                                                          
+Douglas                                                                         
+Irene                                                                           
+John                                                                            
+Sigal                                                                           
+Mozhe                                                                           
+Girard                                                                          
+Vance                                                                           
+Shelli                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Michael                                                                         
+Timothy                                                                         
+Anthony                                                                         
+Kevin                                                                           
+Alexander                                                                       
+Curtis                                                                          
+Jean                                                                            
+Alana                                                                           
+Julia                                                                           
+Stephen                                                                         
+Winston                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Samuel                                                                          
+Laura                                                                           
+Jason                                                                           
+Julia                                                                           
+Trenna                                                                          
+Renske                                                                          
+Jennifer                                                                        
+Kelly                                                                           
+Britney                                                                         
+Sarah                                                                           
+Alexis                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Diana                                                                           
+Nandita                                                                         
+Jennifer                                                                        
+David                                                                           
+Valli                                                                           
+Kevin                                                                           
+Bruce                                                                           
+Pat                                                                             
+Sundita                                                                         
+Amit                                                                            
+Charles                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Sundar                                                                          
+Shanta                                                                          
+Susan                                                                           
+David                                                                           
+Luis                                                                            
+Oliver                                                                          
+Sarath                                                                          
+Kimberely                                                                       
+Mattea                                                                          
+Elizabeth                                                                       
+William                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Nanette                                                                         
+Louise                                                                          
+Ismael                                                                          
+Jose Manuel                                                                     
+Payam                                                                           
+Matthew                                                                         
+Christopher                                                                     
+Lindsey                                                                         
+John                                                                            
+Adam                                                                            
+William                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Jack                                                                            
+Jonathon                                                                        
+Alyssa                                                                          
+Alexander                                                                       
+Daniel                                                                          
+Peter                                                                           
+Allan                                                                           
+Patrick                                                                         
+Danielle                                                                        
+David                                                                           
+Tayler                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Hermann                                                                         
+Harrison                                                                        
+Janette                                                                         
+Peter                                                                           
+Clara                                                                           
+Eleni                                                                           
+Gerald                                                                          
+Den                                                                             
+Ellen                                                                           
+Lisa                                                                            
+Shelley                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Nancy                                                                           
+Alberto                                                                         
+Michael                                                                         
+Karen                                                                           
+John                                                                            
+Lex                                                                             
+Neena                                                                           
+Steven                                                                          
+
+107 rows selected.
+
+SQL> select first_name from employees order by salary desc;
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Steven                                                                          
+Neena                                                                           
+Lex                                                                             
+John                                                                            
+Karen                                                                           
+Michael                                                                         
+Nancy                                                                           
+Alberto                                                                         
+Shelley                                                                         
+Lisa                                                                            
+Ellen                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Gerald                                                                          
+Den                                                                             
+Eleni                                                                           
+Clara                                                                           
+Janette                                                                         
+Peter                                                                           
+Hermann                                                                         
+Harrison                                                                        
+Tayler                                                                          
+Danielle                                                                        
+David                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Patrick                                                                         
+Peter                                                                           
+Alexander                                                                       
+Allan                                                                           
+Daniel                                                                          
+Alyssa                                                                          
+Jonathon                                                                        
+Jack                                                                            
+William                                                                         
+Adam                                                                            
+John                                                                            
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Matthew                                                                         
+Lindsey                                                                         
+Christopher                                                                     
+Payam                                                                           
+Jose Manuel                                                                     
+Ismael                                                                          
+Louise                                                                          
+Nanette                                                                         
+William                                                                         
+Elizabeth                                                                       
+Mattea                                                                          
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Oliver                                                                          
+Kimberely                                                                       
+Sarath                                                                          
+Luis                                                                            
+David                                                                           
+Susan                                                                           
+Shanta                                                                          
+Sundar                                                                          
+Charles                                                                         
+Amit                                                                            
+Sundita                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Pat                                                                             
+Bruce                                                                           
+Kevin                                                                           
+Valli                                                                           
+David                                                                           
+Jennifer                                                                        
+Nandita                                                                         
+Diana                                                                           
+Alexis                                                                          
+Sarah                                                                           
+Britney                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Kelly                                                                           
+Jennifer                                                                        
+Renske                                                                          
+Trenna                                                                          
+Julia                                                                           
+Jason                                                                           
+Laura                                                                           
+Julia                                                                           
+Samuel                                                                          
+Winston                                                                         
+Stephen                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Alexander                                                                       
+Alana                                                                           
+Jean                                                                            
+Curtis                                                                          
+Kevin                                                                           
+Anthony                                                                         
+Shelli                                                                          
+Timothy                                                                         
+Michael                                                                         
+Sigal                                                                           
+Vance                                                                           
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Girard                                                                          
+Mozhe                                                                           
+John                                                                            
+Irene                                                                           
+Guy                                                                             
+Douglas                                                                         
+Donald                                                                          
+Randall                                                                         
+Karen                                                                           
+James                                                                           
+Randall                                                                         
+
+FIRST_NAME                                                                      
+--------------------                                                            
+Peter                                                                           
+Martha                                                                          
+Joshua                                                                          
+Ki                                                                              
+James                                                                           
+Hazel                                                                           
+Steven                                                                          
+TJ                                                                              
+
+107 rows selected.
+
+SQL> select salary,first_name from employees order by salary desc;
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+     24000 Steven                                                               
+     17000 Neena                                                                
+     17000 Lex                                                                  
+     14000 John                                                                 
+     13500 Karen                                                                
+     13000 Michael                                                              
+     12000 Nancy                                                                
+     12000 Alberto                                                              
+     12000 Shelley                                                              
+     11500 Lisa                                                                 
+     11000 Ellen                                                                
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+     11000 Gerald                                                               
+     11000 Den                                                                  
+     10500 Eleni                                                                
+     10500 Clara                                                                
+     10000 Janette                                                              
+     10000 Peter                                                                
+     10000 Hermann                                                              
+     10000 Harrison                                                             
+      9600 Tayler                                                               
+      9500 Danielle                                                             
+      9500 David                                                                
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      9500 Patrick                                                              
+      9000 Peter                                                                
+      9000 Alexander                                                            
+      9000 Allan                                                                
+      9000 Daniel                                                               
+      8800 Alyssa                                                               
+      8600 Jonathon                                                             
+      8400 Jack                                                                 
+      8300 William                                                              
+      8200 Adam                                                                 
+      8200 John                                                                 
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      8000 Matthew                                                              
+      8000 Lindsey                                                              
+      8000 Christopher                                                          
+      7900 Payam                                                                
+      7800 Jose Manuel                                                          
+      7700 Ismael                                                               
+      7500 Louise                                                               
+      7500 Nanette                                                              
+      7400 William                                                              
+      7300 Elizabeth                                                            
+      7200 Mattea                                                               
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      7000 Oliver                                                               
+      7000 Kimberely                                                            
+      7000 Sarath                                                               
+      6900 Luis                                                                 
+      6800 David                                                                
+      6500 Susan                                                                
+      6500 Shanta                                                               
+      6400 Sundar                                                               
+      6200 Charles                                                              
+      6200 Amit                                                                 
+      6100 Sundita                                                              
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      6000 Pat                                                                  
+      6000 Bruce                                                                
+      5800 Kevin                                                                
+      4800 Valli                                                                
+      4800 David                                                                
+      4400 Jennifer                                                             
+      4200 Nandita                                                              
+      4200 Diana                                                                
+      4100 Alexis                                                               
+      4000 Sarah                                                                
+      3900 Britney                                                              
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      3800 Kelly                                                                
+      3600 Jennifer                                                             
+      3600 Renske                                                               
+      3500 Trenna                                                               
+      3400 Julia                                                                
+      3300 Jason                                                                
+      3300 Laura                                                                
+      3200 Julia                                                                
+      3200 Samuel                                                               
+      3200 Winston                                                              
+      3200 Stephen                                                              
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      3100 Alexander                                                            
+      3100 Alana                                                                
+      3100 Jean                                                                 
+      3100 Curtis                                                               
+      3000 Kevin                                                                
+      3000 Anthony                                                              
+      2900 Shelli                                                               
+      2900 Timothy                                                              
+      2900 Michael                                                              
+      2800 Sigal                                                                
+      2800 Vance                                                                
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      2800 Girard                                                               
+      2800 Mozhe                                                                
+      2700 John                                                                 
+      2700 Irene                                                                
+      2600 Guy                                                                  
+      2600 Douglas                                                              
+      2600 Donald                                                               
+      2600 Randall                                                              
+      2500 Karen                                                                
+      2500 James                                                                
+      2500 Randall                                                              
+
+    SALARY FIRST_NAME                                                           
+---------- --------------------                                                 
+      2500 Peter                                                                
+      2500 Martha                                                               
+      2500 Joshua                                                               
+      2400 Ki                                                                   
+      2400 James                                                                
+      2200 Hazel                                                                
+      2200 Steven                                                               
+      2100 TJ                                                                   
+
+107 rows selected.
+
+SQL> select salary,first_name from employees group by salary having salary=3000;
+select salary,first_name from employees group by salary having salary=3000
+              *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> select salary,first_name from employees group by salary having salary=3000;
+select salary,first_name from employees group by salary having salary=3000
+              *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> select * from employees group by salary having salary=3000;
+select * from employees group by salary having salary=3000
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> select salary,sum(salary) from employees group by salary;
+
+    SALARY SUM(SALARY)                                                          
+---------- -----------                                                          
+      9000       36000                                                          
+     12000       36000                                                          
+      8200       16400                                                          
+     11000       33000                                                          
+      2900        8700                                                          
+     14000       14000                                                          
+      4000        4000                                                          
+     13000       13000                                                          
+     24000       24000                                                          
+      7800        7800                                                          
+      2600       10400                                                          
+
+    SALARY SUM(SALARY)                                                          
+---------- -----------                                                          
+      2500       15000                                                          
+      6500       13000                                                          
+      2400        4800                                                          
+     13500       13500                                                          
+     10500       21000                                                          
+     10000       40000                                                          
+      9500       28500                                                          
+      7200        7200                                                          
+      6200       12400                                                          
+      7400        7400                                                          
+      7300        7300                                                          
+
+    SALARY SUM(SALARY)                                                          
+---------- -----------                                                          
+      8600        8600                                                          
+      3400        3400                                                          
+      3900        3900                                                          
+      7700        7700                                                          
+      6900        6900                                                          
+      3500        3500                                                          
+      9600        9600                                                          
+      3800        3800                                                          
+      4800        9600                                                          
+      6400        6400                                                          
+      4100        4100                                                          
+
+    SALARY SUM(SALARY)                                                          
+---------- -----------                                                          
+      4400        4400                                                          
+      4200        8400                                                          
+      2700        5400                                                          
+      2200        4400                                                          
+      7500       15000                                                          
+     11500       11500                                                          
+      2800       11200                                                          
+      3300        6600                                                          
+      3600        7200                                                          
+      3000        6000                                                          
+      6000       12000                                                          
+
+    SALARY SUM(SALARY)                                                          
+---------- -----------                                                          
+      3100       12400                                                          
+      8000       24000                                                          
+      5800        5800                                                          
+      3200       12800                                                          
+      6800        6800                                                          
+      8800        8800                                                          
+     17000       34000                                                          
+      7900        7900                                                          
+      2100        2100                                                          
+      7000       21000                                                          
+      6100        6100                                                          
+
+    SALARY SUM(SALARY)                                                          
+---------- -----------                                                          
+      8400        8400                                                          
+      8300        8300                                                          
+
+57 rows selected.
+
+SQL> select salary from employees group by salary having salary=3000;
+
+    SALARY                                                                      
+----------                                                                      
+      3000                                                                      
+
+SQL> select salary,first_name from employees group by salary having salary=3000;
+select salary,first_name from employees group by salary having salary=3000
+              *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> select first_name from employees group by salary having salary=3000;
+select first_name from employees group by salary having salary=3000
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> select salary from employees group by salary having salary=3000;
+
+    SALARY                                                                      
+----------                                                                      
+      3000                                                                      
+
+SQL> select name,count(name) from employees;
+select name,count(name) from employees
+                  *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select name,count(salary) from employees;
+select name,count(salary) from employees
+       *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select count(salary) from employees;
+
+COUNT(SALARY)                                                                   
+-------------                                                                   
+          107                                                                   
+
+SQL> select count(name) from employees;
+select count(name) from employees
+             *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select count(salary) from employees;
+
+COUNT(SALARY)                                                                   
+-------------                                                                   
+          107                                                                   
+
+SQL> select distinct from employees;
+select distinct from employees
+                *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select distinct salary from employees;
+
+    SALARY                                                                      
+----------                                                                      
+      9000                                                                      
+     12000                                                                      
+      8200                                                                      
+     11000                                                                      
+      2900                                                                      
+     14000                                                                      
+      4000                                                                      
+     13000                                                                      
+     24000                                                                      
+      7800                                                                      
+      2600                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      2500                                                                      
+      6500                                                                      
+      2400                                                                      
+     13500                                                                      
+     10500                                                                      
+     10000                                                                      
+      9500                                                                      
+      7200                                                                      
+      6200                                                                      
+      7400                                                                      
+      7300                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      8600                                                                      
+      3400                                                                      
+      3900                                                                      
+      7700                                                                      
+      6900                                                                      
+      3500                                                                      
+      9600                                                                      
+      3800                                                                      
+      4800                                                                      
+      6400                                                                      
+      4100                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      4400                                                                      
+      4200                                                                      
+      2700                                                                      
+      2200                                                                      
+      7500                                                                      
+     11500                                                                      
+      2800                                                                      
+      3300                                                                      
+      3600                                                                      
+      3000                                                                      
+      6000                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      3100                                                                      
+      8000                                                                      
+      5800                                                                      
+      3200                                                                      
+      6800                                                                      
+      8800                                                                      
+     17000                                                                      
+      7900                                                                      
+      2100                                                                      
+      7000                                                                      
+      6100                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      8400                                                                      
+      8300                                                                      
+
+57 rows selected.
+
+SQL> select count(distinct) salary from employees;
+select count(distinct) salary from employees
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select distinct count(salary) from employees;
+
+COUNT(SALARY)                                                                   
+-------------                                                                   
+          107                                                                   
+
+SQL> select distinct(salary) from employees;
+
+    SALARY                                                                      
+----------                                                                      
+      9000                                                                      
+     12000                                                                      
+      8200                                                                      
+     11000                                                                      
+      2900                                                                      
+     14000                                                                      
+      4000                                                                      
+     13000                                                                      
+     24000                                                                      
+      7800                                                                      
+      2600                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      2500                                                                      
+      6500                                                                      
+      2400                                                                      
+     13500                                                                      
+     10500                                                                      
+     10000                                                                      
+      9500                                                                      
+      7200                                                                      
+      6200                                                                      
+      7400                                                                      
+      7300                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      8600                                                                      
+      3400                                                                      
+      3900                                                                      
+      7700                                                                      
+      6900                                                                      
+      3500                                                                      
+      9600                                                                      
+      3800                                                                      
+      4800                                                                      
+      6400                                                                      
+      4100                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      4400                                                                      
+      4200                                                                      
+      2700                                                                      
+      2200                                                                      
+      7500                                                                      
+     11500                                                                      
+      2800                                                                      
+      3300                                                                      
+      3600                                                                      
+      3000                                                                      
+      6000                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      3100                                                                      
+      8000                                                                      
+      5800                                                                      
+      3200                                                                      
+      6800                                                                      
+      8800                                                                      
+     17000                                                                      
+      7900                                                                      
+      2100                                                                      
+      7000                                                                      
+      6100                                                                      
+
+    SALARY                                                                      
+----------                                                                      
+      8400                                                                      
+      8300                                                                      
+
+57 rows selected.
+
+SQL> select count(distinct(salary)) from employees;
+
+COUNT(DISTINCT(SALARY))                                                         
+-----------------------                                                         
+                     57                                                         
+
+SQL> select count(distinct(salary)) as "distinct salary is" from employees;
+
+distinct salary is                                                              
+------------------                                                              
+                57                                                              
+
+SQL> select count(distinct(salary)) "distinct salary is" from employees;
+
+distinct salary is                                                              
+------------------                                                              
+                57                                                              
+
+SQL> select count(distinct(name)) "distinct name is" from employees;
+select count(distinct(name)) "distinct name is" from employees
+                      *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select count(distinct(name)) "distinct name is" from employees;
+select count(distinct(name)) "distinct name is" from employees
+                      *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select count(name) "distinct name is" from employees;
+select count(name) "distinct name is" from employees
+             *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> select count(first_name) "distinct name is" from employees;
+
+distinct name is                                                                
+----------------                                                                
+             107                                                                
+
+SQL> select count(distinct first_name) "distinct name is" from employees;
+
+distinct name is                                                                
+----------------                                                                
+              91                                                                
+
+SQL> commit;
+
+Commit complete.
+
+SQL> exit

@@ -1,0 +1,225 @@
+SQL> create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20) not null,address varchar2(20) not null,gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20) not null,address varchar2(20) not null,gendar char,DOB date)
+                                     *
+ERROR at line 1:
+ORA-02253: constraint specification not allowed here 
+
+
+SQL> create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20) not null,address varchar2(20),gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20) not null,address varchar2(20),gendar char,DOB date)
+                                     *
+ERROR at line 1:
+ORA-02253: constraint specification not allowed here 
+
+
+SQL> create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20) not null,address varchar2(20),gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20) not null,address varchar2(20),gendar char,DOB date)
+                                     *
+ERROR at line 1:
+ORA-02253: constraint specification not allowed here 
+
+
+SQL> create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date)
+                                     *
+ERROR at line 1:
+ORA-02253: constraint specification not allowed here 
+
+
+SQL> create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date)
+                                     *
+ERROR at line 1:
+ORA-02253: constraint specification not allowed here 
+
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENT                        TABLE                                            
+
+SQL> drop student
+  2  
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENT                        TABLE                                            
+
+SQL> drop student
+  2  ;
+drop student
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk add primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date)
+                                     *
+ERROR at line 1:
+ORA-02253: constraint specification not allowed here 
+
+
+SQL> create table stud (roll_no number(5) constraint rollpk primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date);
+
+Table created.
+
+SQL> create table stud (roll_no number(5) constraint rollpk primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date);
+create table stud (roll_no number(5) constraint rollpk primary key,name varchar2(20)not null,address varchar2(20)not null,gendar char,DOB date)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENT                        TABLE                                            
+STUD                           TABLE                                            
+
+SQL> drop table student
+  2  ;
+
+Table dropped.
+
+SQL> insert table stud values(123,'Akhil','Pune','M',27-3-95);
+insert table stud values(123,'Akhil','Pune','M',27-3-95)
+       *
+ERROR at line 1:
+ORA-00925: missing INTO keyword 
+
+
+SQL> insert table stud values(123,'Akhil','Pune','M','27-3-95');
+insert table stud values(123,'Akhil','Pune','M','27-3-95')
+       *
+ERROR at line 1:
+ORA-00925: missing INTO keyword 
+
+
+SQL> insert into table stud values(123,'Akhil','Pune','M','27-3-95');
+insert into table stud values(123,'Akhil','Pune','M','27-3-95')
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','27-3-95');
+insert into stud values(123,'Akhil','Pune','M','27-3-95')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','27-03-95');
+insert into stud values(123,'Akhil','Pune','M','27-03-95')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M',27-03-95);
+insert into stud values(123,'Akhil','Pune','M',27-03-95)
+                                                    *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected DATE got NUMBER 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','03-27-95');
+insert into stud values(123,'Akhil','Pune','M','03-27-95')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','27/03/1995');
+insert into stud values(123,'Akhil','Pune','M','27/03/1995')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> decs stud
+SP2-0042: unknown command "decs stud" - rest of line ignored.
+SQL> desc stud
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLL_NO                                   NOT NULL NUMBER(5)
+ NAME                                      NOT NULL VARCHAR2(20)
+ ADDRESS                                   NOT NULL VARCHAR2(20)
+ GENDAR                                             CHAR(1)
+ DOB                                                DATE
+
+SQL> insert into stud values(123,'Akhil','Pune','M','03-10-95');
+insert into stud values(123,'Akhil','Pune','M','03-10-95')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> clear screen
+
+SQL> insert into stud values(123,'Akhil','Pune','M','03-10-95');
+insert into stud values(123,'Akhil','Pune','M','03-10-95')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','Jan-10-1999');
+insert into stud values(123,'Akhil','Pune','M','Jan-10-1999')
+                                               *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','10-10-1999');
+insert into stud values(123,'Akhil','Pune','M','10-10-1999')
+                                               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> insert into stud values(123,'Akhil','Pune','M','29-JUN-04');
+
+1 row created.
+
+SQL> insert into stud values(123,'Akhil','Pune','M','29-JUN-04');
+insert into stud values(123,'Akhil','Pune','M','29-JUN-04')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AKHIL.ROLLPK) violated 
+
+
+SQL> insert into stud values(1234,'Akhil','Pune','M','29-JUN-04');
+
+1 row created.
+
+SQL> insert into stud values(1234,'Akhil','Pune','M','29-JUN-04');
+insert into stud values(1234,'Akhil','Pune','M','29-JUN-04')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AKHIL.ROLLPK) violated 
+
+
+SQL> insert into stud values(1234,'vico','Pune','M','29-JUN-04');
+insert into stud values(1234,'vico','Pune','M','29-JUN-04')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (AKHIL.ROLLPK) violated 
+
+
+SQL> select * from stud;
+
+   ROLL_NO NAME                 ADDRESS              G DOB                      
+---------- -------------------- -------------------- - ---------                
+       123 Akhil                Pune                 M 29-JUN-04                
+      1234 Akhil                Pune                 M 29-JUN-04                
+
+SQL> edit stud1
+
+SQL> edit stud1
+
+SQL> 

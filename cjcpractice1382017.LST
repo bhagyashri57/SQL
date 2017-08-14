@@ -1,0 +1,716 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+REGIONS                        TABLE                                            
+COUNTRIES                      TABLE                                            
+LOCATIONS                      TABLE                                            
+DEPARTMENTS                    TABLE                                            
+JOBS                           TABLE                                            
+EMPLOYEES                      TABLE                                            
+JOB_HISTORY                    TABLE                                            
+EMP_DETAILS_VIEW               VIEW                                             
+
+8 rows selected.
+
+SQL> select * from regions;
+
+ REGION_ID REGION_NAME                                                          
+---------- -------------------------                                            
+         1 Europe                                                               
+         2 Americas                                                             
+         3 Asia                                                                 
+         4 Middle East and Africa                                               
+
+SQL> desc regions;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGION_ID                                 NOT NULL NUMBER
+ REGION_NAME                                        VARCHAR2(25)
+
+SQL> alter tablle regions add constraint region_id_primary_key primary key(region_id);
+alter tablle regions add constraint region_id_primary_key primary key(region_id)
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> alter table regions add constraint region_id_primary_key primary key(region_id);
+alter table regions add constraint region_id_primary_key primary key(region_id)
+                                                         *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> desc regions;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGION_ID                                 NOT NULL NUMBER
+ REGION_NAME                                        VARCHAR2(25)
+
+SQL> alter table regions drop constraint;
+alter table regions drop constraint
+                                  *
+ERROR at line 1:
+ORA-02250: missing or invalid constraint name 
+
+
+SQL> alter table regions drop constraint region_id_primary_key;
+alter table regions drop constraint region_id_primary_key
+                                    *
+ERROR at line 1:
+ORA-02443: Cannot drop constraint  - nonexistent constraint 
+
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+REGIONS                        TABLE                                            
+COUNTRIES                      TABLE                                            
+LOCATIONS                      TABLE                                            
+DEPARTMENTS                    TABLE                                            
+JOBS                           TABLE                                            
+EMPLOYEES                      TABLE                                            
+JOB_HISTORY                    TABLE                                            
+EMP_DETAILS_VIEW               VIEW                                             
+
+8 rows selected.
+
+SQL> select * from jobs;
+
+JOB_ID     JOB_TITLE                           MIN_SALARY MAX_SALARY            
+---------- ----------------------------------- ---------- ----------            
+AD_PRES    President                                20000      40000            
+AD_VP      Administration Vice President            15000      30000            
+AD_ASST    Administration Assistant                  3000       6000            
+FI_MGR     Finance Manager                           8200      16000            
+FI_ACCOUNT Accountant                                4200       9000            
+AC_MGR     Accounting Manager                        8200      16000            
+AC_ACCOUNT Public Accountant                         4200       9000            
+SA_MAN     Sales Manager                            10000      20000            
+SA_REP     Sales Representative                      6000      12000            
+PU_MAN     Purchasing Manager                        8000      15000            
+PU_CLERK   Purchasing Clerk                          2500       5500            
+
+JOB_ID     JOB_TITLE                           MIN_SALARY MAX_SALARY            
+---------- ----------------------------------- ---------- ----------            
+ST_MAN     Stock Manager                             5500       8500            
+ST_CLERK   Stock Clerk                               2000       5000            
+SH_CLERK   Shipping Clerk                            2500       5500            
+IT_PROG    Programmer                                4000      10000            
+MK_MAN     Marketing Manager                         9000      15000            
+MK_REP     Marketing Representative                  4000       9000            
+HR_REP     Human Resources Representative            4000       9000            
+PR_REP     Public Relations Representative           4500      10500            
+
+19 rows selected.
+
+SQL> desc jobs;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ JOB_TITLE                                 NOT NULL VARCHAR2(35)
+ MIN_SALARY                                         NUMBER(6)
+ MAX_SALARY                                         NUMBER(6)
+
+SQL> alter table jobs add constraint jobs_primary_key primary key(job_id);
+alter table jobs add constraint jobs_primary_key primary key(job_id)
+                                                 *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> create table emp(emp_id number,emp_name varchar2(20),emp_salary number);
+
+Table created.
+
+SQL> insert into emp values(&emp_id,'&emp_name',&emp_salary);
+Enter value for emp_id: 101
+Enter value for emp_name: akhil
+Enter value for emp_salary: 10000
+old   1: insert into emp values(&emp_id,'&emp_name',&emp_salary)
+new   1: insert into emp values(101,'akhil',10000)
+
+1 row created.
+
+SQL> ;
+  1* insert into emp values(&emp_id,'&emp_name',&emp_salary)
+SQL> /
+Enter value for emp_id: 104
+Enter value for emp_name: raj
+Enter value for emp_salary: 15000
+old   1: insert into emp values(&emp_id,'&emp_name',&emp_salary)
+new   1: insert into emp values(104,'raj',15000)
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 110
+Enter value for emp_name: vico
+Enter value for emp_salary: 20000
+old   1: insert into emp values(&emp_id,'&emp_name',&emp_salary)
+new   1: insert into emp values(110,'vico',20000)
+
+1 row created.
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME             EMP_SALARY                                      
+---------- -------------------- ----------                                      
+       101 akhil                     10000                                      
+       104 raj                       15000                                      
+       110 vico                      20000                                      
+
+SQL> alter table emp add contact number;
+
+Table altered.
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME             EMP_SALARY    CONTACT                           
+---------- -------------------- ---------- ----------                           
+       101 akhil                     10000                                      
+       104 raj                       15000                                      
+       110 vico                      20000                                      
+
+SQL> update emp set contact=1234565456 where emp_id=101;
+
+1 row updated.
+
+SQL> update emp set contact=9676754534 where emp_id=104;
+
+1 row updated.
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME             EMP_SALARY    CONTACT                           
+---------- -------------------- ---------- ----------                           
+       101 akhil                     10000 1234565456                           
+       104 raj                       15000 9676754534                           
+       110 vico                      20000                                      
+
+SQL> alter table emp add constraint emp_id_primary_key primary key(emp_id);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                           VARCHAR2(20)
+ EMP_SALARY                                         NUMBER
+ CONTACT                                            NUMBER
+
+SQL> alter table emp add constraint emp_id_primary_key primary key(emp_name);
+alter table emp add constraint emp_id_primary_key primary key(emp_name)
+                                                  *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> alter table emp modify emp_name emp_name varchar2(25);
+alter table emp modify emp_name emp_name varchar2(25)
+                                         *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table emp modify emp_name varchar2(25);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                           VARCHAR2(25)
+ EMP_SALARY                                         NUMBER
+ CONTACT                                            NUMBER
+
+SQL> alter table emp modify column emp_name varchar2(50);
+alter table emp modify column emp_name varchar2(50)
+                                       *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp modify column emp_name varchar2(50) not null;
+alter table emp modify column emp_name varchar2(50) not null
+                                       *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp modify emp_name varchar2(50) not null;
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ EMP_SALARY                                         NUMBER
+ CONTACT                                            NUMBER
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME                                           EMP_SALARY        
+---------- -------------------------------------------------- ----------        
+   CONTACT                                                                      
+----------                                                                      
+       101 akhil                                                   10000        
+1234565456                                                                      
+                                                                                
+       104 raj                                                     15000        
+9676754534                                                                      
+                                                                                
+       110 vico                                                    20000        
+                                                                                
+                                                                                
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ EMP_SALARY                                         NUMBER
+ CONTACT                                            NUMBER
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME                                           EMP_SALARY        
+---------- -------------------------------------------------- ----------        
+   CONTACT                                                                      
+----------                                                                      
+       101 akhil                                                   10000        
+1234565456                                                                      
+                                                                                
+       104 raj                                                     15000        
+9676754534                                                                      
+                                                                                
+       110 vico                                                    20000        
+                                                                                
+                                                                                
+
+SQL> select emp_id from emp;
+
+    EMP_ID                                                                      
+----------                                                                      
+       101                                                                      
+       104                                                                      
+       110                                                                      
+
+SQL> select sum(emp_id) as sum from emp;
+
+       SUM                                                                      
+----------                                                                      
+       315                                                                      
+
+SQL> select count(sum(emp_id)) as sum from emp;
+select count(sum(emp_id)) as sum from emp
+             *
+ERROR at line 1:
+ORA-00978: nested group function without GROUP BY 
+
+
+SQL> select sum(count(emp_id)) as sum from emp;
+select sum(count(emp_id)) as sum from emp
+           *
+ERROR at line 1:
+ORA-00978: nested group function without GROUP BY 
+
+
+SQL> select avg(emp_id) as sum from emp;
+
+       SUM                                                                      
+----------                                                                      
+       105                                                                      
+
+SQL> select max(emp_id) as max from emp;
+
+       MAX                                                                      
+----------                                                                      
+       110                                                                      
+
+SQL> select min(emp_id) as min from emp;
+
+       MIN                                                                      
+----------                                                                      
+       101                                                                      
+
+SQL> select emp_name from emp order by emp_name;
+
+EMP_NAME                                                                        
+--------------------------------------------------                              
+akhil                                                                           
+raj                                                                             
+vico                                                                            
+
+SQL> select emp_name from emp order by emp_name desc;
+
+EMP_NAME                                                                        
+--------------------------------------------------                              
+vico                                                                            
+raj                                                                             
+akhil                                                                           
+
+SQL> alter tabe emp drop contact;
+alter tabe emp drop contact
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> alter table emp drop contact;
+alter table emp drop contact
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp drop column contact;
+
+Table altered.
+
+SQL> alter table emp modify emp_salary salary;
+alter table emp modify emp_salary salary
+                       *
+ERROR at line 1:
+ORA-22858: invalid alteration of datatype 
+
+
+SQL> alter table emp modify emp_salary salary number;
+alter table emp modify emp_salary salary number
+                                         *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table emp modify column emp_salary number;
+alter table emp modify column emp_salary number
+                                         *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp modify column emp_salary number(12);
+alter table emp modify column emp_salary number(12)
+                                         *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp modify emp_salary number(12);
+alter table emp modify emp_salary number(12)
+                       *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale 
+
+
+SQL> alter table emp modify emp_salary number;
+
+Table altered.
+
+SQL> alter table emp add constraint name_unique_key unique(emp_name);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ EMP_SALARY                                         NUMBER
+
+SQL> alter table emp drop constraint name_unique_key;
+
+Table altered.
+
+SQL> alter table emp drop constraint emp_id_primary_key;
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ EMP_SALARY                                         NUMBER
+
+SQL> alter table emp emp_name drop not null;
+alter table emp emp_name drop not null
+                *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table emp alter column emp_name drop not null;
+alter table emp alter column emp_name drop not null
+                *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table emp drop not null from emp_name;
+alter table emp drop not null from emp_name
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp drop emp_name not null;
+alter table emp drop emp_name not null
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME                                           EMP_SALARY        
+---------- -------------------------------------------------- ----------        
+       101 akhil                                                   10000        
+       104 raj                                                     15000        
+       110 vico                                                    20000        
+
+SQL> alter table emp add constraint emp_name_check check(emp_name);
+alter table emp add constraint emp_name_check check(emp_name)
+                                                            *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> alter table emp add constraint emp_name_check check(emp_name != 0);
+alter table emp add constraint emp_name_check check(emp_name != 0)
+                                                                *
+ERROR at line 1:
+ORA-00604: error occurred at recursive SQL level 1 
+ORA-01722: invalid number 
+
+
+SQL> alter table emp add constraint emp_name_check check(emp_name != null);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ EMP_SALARY                                         NUMBER
+
+SQL> alter table emp drop emp_name_check;
+alter table emp drop emp_name_check
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp drop constarint emp_name_check;
+alter table emp drop constarint emp_name_check
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp drop constraint emp_name_check;
+
+Table altered.
+
+SQL> alter table emp modify emp_name varchar2(25) null;
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER
+ EMP_NAME                                           VARCHAR2(25)
+ EMP_SALARY                                         NUMBER
+
+SQL> alter table emp drop emp_salary;
+alter table emp drop emp_salary
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp drop column emp_salary;
+
+Table altered.
+
+SQL> alter table emp modify column emp_name name varchar2(20);
+alter table emp modify column emp_name name varchar2(20)
+                                       *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp modify column emp_name, name varchar2(20);
+alter table emp modify column emp_name, name varchar2(20)
+                                      *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp modify name varchar2(20);
+alter table emp modify name varchar2(20)
+                       *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> alter table emp modify column emp_name varchar2(20);
+alter table emp modify column emp_name varchar2(20)
+                                       *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table emp alter column emp_name varchar2(26);
+alter table emp alter column emp_name varchar2(26)
+                *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table emp rename emp_name to name;
+alter table emp rename emp_name to name
+                       *
+ERROR at line 1:
+ORA-14155: missing PARTITION or SUBPARTITION keyword 
+
+
+SQL> alter table emp rename column emp_name to name;
+
+Table altered.
+
+SQL> select * from emp;
+
+    EMP_ID NAME                                                                 
+---------- -------------------------                                            
+       101 akhil                                                                
+       104 raj                                                                  
+       110 vico                                                                 
+
+SQL> alter table emp add salary number;
+
+Table altered.
+
+SQL> update emp set salary=10000 where emp_id=101;
+
+1 row updated.
+
+SQL> update emp set salary=15000 where emp_id=110;
+
+1 row updated.
+
+SQL> update emp set salary=20000 where emp_id=104;
+
+1 row updated.
+
+SQL> select * from emp;
+
+    EMP_ID NAME                          SALARY                                 
+---------- ------------------------- ----------                                 
+       101 akhil                          10000                                 
+       104 raj                            20000                                 
+       110 vico                           15000                                 
+
+SQL> select emp_id,salary,salary*5/100 as bonus from emp;
+
+    EMP_ID     SALARY      BONUS                                                
+---------- ---------- ----------                                                
+       101      10000        500                                                
+       104      20000       1000                                                
+       110      15000        750                                                
+
+SQL> select emp_id,salary,avg(salary*5/100) as bonus from emp;
+select emp_id,salary,avg(salary*5/100) as bonus from emp
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> select avg(salary*5/100) as bonus from emp;
+
+     BONUS                                                                      
+----------                                                                      
+       750                                                                      
+
+SQL> select avg(select sum(salary)from emp)from emp;
+select avg(select sum(salary)from emp)from emp
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select avg(select sum(salary)from emp;)from emp;
+select avg(select sum(salary)from emp;)from emp
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select avg(select sum(salary) from emp;)from emp;
+select avg(select sum(salary) from emp;)from emp
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select avg(select sum(salary) from emp;) as 'total bonus' from emp;
+select avg(select sum(salary) from emp;) as 'total bonus' from emp
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select nvl(null,'arg1') from emp;
+
+NVL(                                                                            
+----                                                                            
+arg1                                                                            
+arg1                                                                            
+arg1                                                                            
+
+SQL> select nvl('arg1','arg2') from emp;
+
+NVL(                                                                            
+----                                                                            
+arg1                                                                            
+arg1                                                                            
+arg1                                                                            
+
+SQL> select nvl2('arg1','arg2','arg3') from emp;
+
+NVL2                                                                            
+----                                                                            
+arg2                                                                            
+arg2                                                                            
+arg2                                                                            
+
+SQL> select nvl2('null','arg2','arg3') from emp;
+
+NVL2                                                                            
+----                                                                            
+arg2                                                                            
+arg2                                                                            
+arg2                                                                            
+
+SQL> select nvl2(null,'arg2','arg3') from emp;
+
+NVL2                                                                            
+----                                                                            
+arg3                                                                            
+arg3                                                                            
+arg3                                                                            
+
+SQL> 
+SQL> commit;
+
+Commit complete.
+
+SQL> exit

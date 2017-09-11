@@ -1,0 +1,346 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+EMPLOYEE                       TABLE                                            
+EMPLOYEE1                      TABLE                                            
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(38)
+ ENAME                                              VARCHAR2(20)
+
+SQL> create sequence emp_id start with 1
+  2  increment by 1
+  3  minvalue 1
+  4  maxvalue 5;
+
+Sequence created.
+
+SQL> insert into employee values(emp_id.nextval,"bhagii");
+insert into employee values(emp_id.nextval,"bhagii")
+                                           *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into employee values(emp_id.nextval,'bhagii');
+
+1 row created.
+
+SQL> insert into employee values(emp_id.nextval,'pintu');
+
+1 row created.
+
+SQL> select * from employee;
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+
+SQL> insert into employee values(emp_id.nextval,'psonu');
+
+1 row created.
+
+SQL> insert into employee values('psonu');
+insert into employee values('psonu')
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> insert into employee values(emp_id.nextval,'psonu');
+
+1 row created.
+
+SQL> insert into employee values(emp_id.nextval,'minal');
+
+1 row created.
+
+SQL> insert into employee values(emp_id.nextval,'kajal');
+insert into employee values(emp_id.nextval,'kajal')
+                            *
+ERROR at line 1:
+ORA-08004: sequence EMP_ID.NEXTVAL exceeds MAXVALUE and cannot be instantiated 
+
+
+SQL> insert into employee values(emp_id.nextval,'kajal');
+insert into employee values(emp_id.nextval,'kajal')
+            *
+ERROR at line 1:
+ORA-08004: sequence EMP_ID.NEXTVAL exceeds MAXVALUE and cannot be instantiated 
+
+
+SQL> select * from employee;
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+         5 minal                                                                
+
+8 rows selected.
+
+SQL> create table employee3(emp_id number(3)PRIMARY KEY,ename varchar(20));
+
+Table created.
+
+SQL> create sequence emp start with 1;
+
+Sequence created.
+
+SQL> insert into employee3 values(emp.nextval,'bhagi');
+
+1 row created.
+
+SQL> insert into employee3 values(emp.nextval,'sonu');
+
+1 row created.
+
+SQL> insert into employee3 values(emp.nextval,'pintu');
+
+1 row created.
+
+SQL> insert into employee3 values(emp.nextval,'ganu');
+
+1 row created.
+
+SQL> select * from employee3;
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagi                                                                
+         2 sonu                                                                 
+         3 pintu                                                                
+         4 ganu                                                                 
+
+SQL> create table duplicateemployee as select * from employee3;
+
+Table created.
+
+SQL> select * from duplicateemployee;
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagi                                                                
+         2 sonu                                                                 
+         3 pintu                                                                
+         4 ganu                                                                 
+
+SQL> insert into duplicateemployee select * from employee;
+
+8 rows created.
+
+SQL> select * from duplicateemployee;
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagi                                                                
+         2 sonu                                                                 
+         3 pintu                                                                
+         4 ganu                                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         5 minal                                                                
+
+12 rows selected.
+
+SQL> select * from duplicateemployee;
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagi                                                                
+         2 sonu                                                                 
+         3 pintu                                                                
+         4 ganu                                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         5 minal                                                                
+
+12 rows selected.
+
+SQL> select * from employee;
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+         5 minal                                                                
+
+8 rows selected.
+
+SQL> create table syntel as ename from employee;
+create table syntel as ename from employee
+                       *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> create table syntel as select ename from employee;
+
+Table created.
+
+SQL> select * from syntel;
+
+ENAME                                                                           
+--------------------                                                            
+bhagyashri                                                                      
+Aishu                                                                           
+Akhil                                                                           
+bhagii                                                                          
+pintu                                                                           
+psonu                                                                           
+psonu                                                                           
+minal                                                                           
+
+8 rows selected.
+
+SQL> create table syntel as select eid,ename from employee;
+create table syntel as select eid,ename from employee
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table syntel1 as select eid,ename from employee;
+
+Table created.
+
+SQL> select * from syntel1;
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+         5 minal                                                                
+
+8 rows selected.
+
+SQL> alter table syntel as select eid from empolyee;
+alter table syntel as select eid from empolyee
+                   *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table syntel add coloumn as select eid from empolyee;
+alter table syntel add coloumn as select eid from empolyee
+                               *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> alter table syntel add coloumn  number(2) as select eid from empolyee;
+alter table syntel add coloumn  number(2) as select eid from empolyee
+                                          *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> create view myview as select * from employee with read only constraint read_pk;
+
+View created.
+
+SQL> select * from myview;
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+         5 minal                                                                
+
+8 rows selected.
+
+SQL> insert into myview values(6,'dan');
+insert into myview values(6,'dan')
+*
+ERROR at line 1:
+ORA-01733: virtual column not allowed here 
+
+
+SQL> drop view myview;
+
+View dropped.
+
+SQL> --clean the table;
+SQL> select * from employee;
+
+       EID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagyashri                                                           
+         2 Aishu                                                                
+         3 Akhil                                                                
+         1 bhagii                                                               
+         2 pintu                                                                
+         3 psonu                                                                
+         4 psonu                                                                
+         5 minal                                                                
+
+8 rows selected.
+
+SQL> select * from employee1;
+
+       EID EADDRESS                                                             
+---------- --------------------                                                 
+         3 jalgaon                                                              
+         2 mumbai                                                               
+         1 pune                                                                 
+
+SQL> select * from employee2;
+select * from employee2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from employee3;
+
+    EMP_ID ENAME                                                                
+---------- --------------------                                                 
+         1 bhagi                                                                
+         2 sonu                                                                 
+         3 pintu                                                                
+         4 ganu                                                                 
+
+SQL> exit

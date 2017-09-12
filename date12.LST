@@ -1,0 +1,306 @@
+SQL> select employee_id,first_name,manager_id,m.first_name from employees e,employees m where e.employee_id=e.manager_id;
+select employee_id,first_name,manager_id,m.first_name from employees e,employees m where e.employee_id=e.manager_id
+                              *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL> select employee_id,first_name,manager_id,m.first_name from employees e,employees m where e.employee_id=m.manager_id;
+select employee_id,first_name,manager_id,m.first_name from employees e,employees m where e.employee_id=m.manager_id
+                              *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL> select e.employee_id,e.first_name,manager_id,m.first_name from employees e,employees m where e.employee_id=m.manager_id;
+select e.employee_id,e.first_name,manager_id,m.first_name from employees e,employees m where e.employee_id=m.manager_id
+                                  *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL> select e.employee_id,e.first_name,e.manager_id,m.first_name from employees e,employees m where e.employee_id=e.manager_id;
+
+no rows selected
+
+SQL> select e.employee_id,e.first_name,e.manager_id,m.first_name "Manager name" from employees e,employees m where e.employee_id=m.manager_id;
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        100 Steven                          Neena                               
+        100 Steven                          Lex                                 
+        102 Lex                         100 Alexander                           
+        103 Alexander                   102 Bruce                               
+        103 Alexander                   102 David                               
+        103 Alexander                   102 Valli                               
+        103 Alexander                   102 Diana                               
+        101 Neena                       100 Nancy                               
+        108 Nancy                       101 Daniel                              
+        108 Nancy                       101 John                                
+        108 Nancy                       101 Ismael                              
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        108 Nancy                       101 Jose Manuel                         
+        108 Nancy                       101 Luis                                
+        100 Steven                          Den                                 
+        114 Den                         100 Alexander                           
+        114 Den                         100 Shelli                              
+        114 Den                         100 Sigal                               
+        114 Den                         100 Guy                                 
+        114 Den                         100 Karen                               
+        100 Steven                          Matthew                             
+        100 Steven                          Adam                                
+        100 Steven                          Payam                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        100 Steven                          Shanta                              
+        100 Steven                          Kevin                               
+        120 Matthew                     100 Julia                               
+        120 Matthew                     100 Irene                               
+        120 Matthew                     100 James                               
+        120 Matthew                     100 Steven                              
+        121 Adam                        100 Laura                               
+        121 Adam                        100 Mozhe                               
+        121 Adam                        100 James                               
+        121 Adam                        100 TJ                                  
+        122 Payam                       100 Jason                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        122 Payam                       100 Michael                             
+        122 Payam                       100 Ki                                  
+        122 Payam                       100 Hazel                               
+        123 Shanta                      100 Renske                              
+        123 Shanta                      100 Stephen                             
+        123 Shanta                      100 John                                
+        123 Shanta                      100 Joshua                              
+        124 Kevin                       100 Trenna                              
+        124 Kevin                       100 Curtis                              
+        124 Kevin                       100 Randall                             
+        124 Kevin                       100 Peter                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        100 Steven                          John                                
+        100 Steven                          Karen                               
+        100 Steven                          Alberto                             
+        100 Steven                          Gerald                              
+        100 Steven                          Eleni                               
+        145 John                        100 Peter                               
+        145 John                        100 David                               
+        145 John                        100 Peter                               
+        145 John                        100 Christopher                         
+        145 John                        100 Nanette                             
+        145 John                        100 Oliver                              
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        146 Karen                       100 Janette                             
+        146 Karen                       100 Patrick                             
+        146 Karen                       100 Allan                               
+        146 Karen                       100 Lindsey                             
+        146 Karen                       100 Louise                              
+        146 Karen                       100 Sarath                              
+        147 Alberto                     100 Clara                               
+        147 Alberto                     100 Danielle                            
+        147 Alberto                     100 Mattea                              
+        147 Alberto                     100 David                               
+        147 Alberto                     100 Sundar                              
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        147 Alberto                     100 Amit                                
+        148 Gerald                      100 Lisa                                
+        148 Gerald                      100 Harrison                            
+        148 Gerald                      100 Tayler                              
+        148 Gerald                      100 William                             
+        148 Gerald                      100 Elizabeth                           
+        148 Gerald                      100 Sundita                             
+        149 Eleni                       100 Ellen                               
+        149 Eleni                       100 Alyssa                              
+        149 Eleni                       100 Jonathon                            
+        149 Eleni                       100 Jack                                
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        149 Eleni                       100 Kimberely                           
+        149 Eleni                       100 Charles                             
+        120 Matthew                     100 Winston                             
+        120 Matthew                     100 Jean                                
+        120 Matthew                     100 Martha                              
+        120 Matthew                     100 Girard                              
+        121 Adam                        100 Nandita                             
+        121 Adam                        100 Alexis                              
+        121 Adam                        100 Julia                               
+        121 Adam                        100 Anthony                             
+        122 Payam                       100 Kelly                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        122 Payam                       100 Jennifer                            
+        122 Payam                       100 Timothy                             
+        122 Payam                       100 Randall                             
+        123 Shanta                      100 Sarah                               
+        123 Shanta                      100 Britney                             
+        123 Shanta                      100 Samuel                              
+        123 Shanta                      100 Vance                               
+        124 Kevin                       100 Alana                               
+        124 Kevin                       100 Kevin                               
+        124 Kevin                       100 Donald                              
+        124 Kevin                       100 Douglas                             
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        101 Neena                       100 Jennifer                            
+        100 Steven                          Michael                             
+        201 Michael                     100 Pat                                 
+        101 Neena                       100 Susan                               
+        101 Neena                       100 Hermann                             
+        101 Neena                       100 Shelley                             
+        205 Shelley                     101 William                             
+
+106 rows selected.
+
+SQL> select e.employee_id,e.first_name,e.manager_id,m.first_name "Manager name" from employees e,employees m where e.manager_id=m.employee_id;
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        101 Neena                       100 Steven                              
+        102 Lex                         100 Steven                              
+        103 Alexander                   102 Lex                                 
+        104 Bruce                       103 Alexander                           
+        105 David                       103 Alexander                           
+        106 Valli                       103 Alexander                           
+        107 Diana                       103 Alexander                           
+        108 Nancy                       101 Neena                               
+        109 Daniel                      108 Nancy                               
+        110 John                        108 Nancy                               
+        111 Ismael                      108 Nancy                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        112 Jose Manuel                 108 Nancy                               
+        113 Luis                        108 Nancy                               
+        114 Den                         100 Steven                              
+        115 Alexander                   114 Den                                 
+        116 Shelli                      114 Den                                 
+        117 Sigal                       114 Den                                 
+        118 Guy                         114 Den                                 
+        119 Karen                       114 Den                                 
+        120 Matthew                     100 Steven                              
+        121 Adam                        100 Steven                              
+        122 Payam                       100 Steven                              
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        123 Shanta                      100 Steven                              
+        124 Kevin                       100 Steven                              
+        125 Julia                       120 Matthew                             
+        126 Irene                       120 Matthew                             
+        127 James                       120 Matthew                             
+        128 Steven                      120 Matthew                             
+        129 Laura                       121 Adam                                
+        130 Mozhe                       121 Adam                                
+        131 James                       121 Adam                                
+        132 TJ                          121 Adam                                
+        133 Jason                       122 Payam                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        134 Michael                     122 Payam                               
+        135 Ki                          122 Payam                               
+        136 Hazel                       122 Payam                               
+        137 Renske                      123 Shanta                              
+        138 Stephen                     123 Shanta                              
+        139 John                        123 Shanta                              
+        140 Joshua                      123 Shanta                              
+        141 Trenna                      124 Kevin                               
+        142 Curtis                      124 Kevin                               
+        143 Randall                     124 Kevin                               
+        144 Peter                       124 Kevin                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        145 John                        100 Steven                              
+        146 Karen                       100 Steven                              
+        147 Alberto                     100 Steven                              
+        148 Gerald                      100 Steven                              
+        149 Eleni                       100 Steven                              
+        150 Peter                       145 John                                
+        151 David                       145 John                                
+        152 Peter                       145 John                                
+        153 Christopher                 145 John                                
+        154 Nanette                     145 John                                
+        155 Oliver                      145 John                                
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        156 Janette                     146 Karen                               
+        157 Patrick                     146 Karen                               
+        158 Allan                       146 Karen                               
+        159 Lindsey                     146 Karen                               
+        160 Louise                      146 Karen                               
+        161 Sarath                      146 Karen                               
+        162 Clara                       147 Alberto                             
+        163 Danielle                    147 Alberto                             
+        164 Mattea                      147 Alberto                             
+        165 David                       147 Alberto                             
+        166 Sundar                      147 Alberto                             
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        167 Amit                        147 Alberto                             
+        168 Lisa                        148 Gerald                              
+        169 Harrison                    148 Gerald                              
+        170 Tayler                      148 Gerald                              
+        171 William                     148 Gerald                              
+        172 Elizabeth                   148 Gerald                              
+        173 Sundita                     148 Gerald                              
+        174 Ellen                       149 Eleni                               
+        175 Alyssa                      149 Eleni                               
+        176 Jonathon                    149 Eleni                               
+        177 Jack                        149 Eleni                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        178 Kimberely                   149 Eleni                               
+        179 Charles                     149 Eleni                               
+        180 Winston                     120 Matthew                             
+        181 Jean                        120 Matthew                             
+        182 Martha                      120 Matthew                             
+        183 Girard                      120 Matthew                             
+        184 Nandita                     121 Adam                                
+        185 Alexis                      121 Adam                                
+        186 Julia                       121 Adam                                
+        187 Anthony                     121 Adam                                
+        188 Kelly                       122 Payam                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        189 Jennifer                    122 Payam                               
+        190 Timothy                     122 Payam                               
+        191 Randall                     122 Payam                               
+        192 Sarah                       123 Shanta                              
+        193 Britney                     123 Shanta                              
+        194 Samuel                      123 Shanta                              
+        195 Vance                       123 Shanta                              
+        196 Alana                       124 Kevin                               
+        197 Kevin                       124 Kevin                               
+        198 Donald                      124 Kevin                               
+        199 Douglas                     124 Kevin                               
+
+EMPLOYEE_ID FIRST_NAME           MANAGER_ID Manager name                        
+----------- -------------------- ---------- --------------------                
+        200 Jennifer                    101 Neena                               
+        201 Michael                     100 Steven                              
+        202 Pat                         201 Michael                             
+        203 Susan                       101 Neena                               
+        204 Hermann                     101 Neena                               
+        205 Shelley                     101 Neena                               
+        206 William                     205 Shelley                             
+
+106 rows selected.
+
+SQL> exit;

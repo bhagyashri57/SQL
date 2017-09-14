@@ -1,0 +1,26 @@
+SQL> alter table student rename id to stud_id;
+alter table student rename id to stud_id
+                           *
+ERROR at line 1:
+ORA-14155: missing PARTITION or SUBPARTITION keyword 
+
+
+SQL> alter table student rename column id to stud_id;
+
+Table altered.
+
+SQL> alter table student drop constraint pk;
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUD_ID                                   NOT NULL NUMBER(38)
+ NAME                                               VARCHAR2(40)
+ ADDR                                               VARCHAR2(20)
+ MARKS                                              NUMBER(4)
+
+SQL> sqlplus hr/hr
+SP2-0734: unknown command beginning "sqlplus hr..." - rest of line ignored.
+SQL> exit;

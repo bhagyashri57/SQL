@@ -1,170 +1,463 @@
+SQL> select * from tab;
 
-SQL> create table employee(empid number(2) primary key,ename varchar(20)not null,designation varchar(20)not null);
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+EMPLOYEE                       TABLE                                            
+EMPLOYEE1                      TABLE                                            
+EMPLOYEE3                      TABLE                                            
+DUPLICATEEMPLOYEE              TABLE                                            
+SYNTEL                         TABLE                                            
+SYNTEL1                        TABLE                                            
+
+6 rows selected.
+
+SQL> create table student(id int PRIMARY KEY,name varchar(20),addr varchar(20));
 
 Table created.
 
-SQL> desc employee;
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- EMPID                                     NOT NULL NUMBER(2)
- ENAME                                     NOT NULL VARCHAR2(20)
- DESIGNATION                               NOT NULL VARCHAR2(20)
-
-
-SQL> alter table employee add salary decimal(2,3);
-
-Table altered.
-
-SQL> desc employee;
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- EMPID                                     NOT NULL NUMBER(2)
- ENAME                                     NOT NULL VARCHAR2(20)
- DESIGNATION                               NOT NULL VARCHAR2(20)
- SALARY                                             NUMBER(2,3)
-
-
-
-
-SQL> alter table employee add constraint ename1 unique(ename);
-
-Table altered.
-
-
-SQL> alter table employee add constraint ep1  unique(designation,salary);
-
-Table altered.
-
-SQL> alter table employee drop constraint unique(salary);
-alter table employee drop constraint unique(salary)
-                                     *
+SQL> select &id,&name,&addr from student;
+Enter value for id: 1
+Enter value for name: bhagyashri
+Enter value for addr: jalgaon
+old   1: select &id,&name,&addr from student
+new   1: select 1,bhagyashri,jalgaon from student
+select 1,bhagyashri,jalgaon from student
+                    *
 ERROR at line 1:
-ORA-02250: missing or invalid constraint name 
+ORA-00904: "JALGAON": invalid identifier 
 
 
+SQL> select &id,&name,&addr from student;
+Enter value for id: 1
+Enter value for name: gb
+Enter value for addr: fgb
+old   1: select &id,&name,&addr from student
+new   1: select 1,gb,fgb from student
+select 1,gb,fgb from student
+            *
+ERROR at line 1:
+ORA-00904: "FGB": invalid identifier 
 
 
-SQL> alter table employee drop constraint ep1;
+SQL> select &id,'&name','&addr' from student;
+Enter value for id: 1
+Enter value for name: bhagyashri
+Enter value for addr: jalgaon
+old   1: select &id,'&name','&addr' from student
+new   1: select 1,'bhagyashri','jalgaon' from student
 
-Table altered.
+no rows selected
 
-SQL> desc employee;
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- EMPID                                     NOT NULL NUMBER(2)
- ENAME                                     NOT NULL VARCHAR2(20)
- DESIGNATION                               NOT NULL VARCHAR2(20)
- SALARY                                             NUMBER(2,3)
+SQL> select &col1,&col2,&col3 from student;
+Enter value for col1: id
+Enter value for col2: name
+Enter value for col3: addr
+old   1: select &col1,&col2,&col3 from student
+new   1: select id,name,addr from student
 
+no rows selected
 
-SQL> alter table employee drop column salary;
-
-Table altered.
-
-SQL> desc employee;
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- EMPID                                     NOT NULL NUMBER(2)
- ENAME                                     NOT NULL VARCHAR2(20)
- DESIGNATION                               NOT NULL VARCHAR2(20)
-
-
-SQL> insert into employee values(1,'bhagyashri','sofetware ');
+SQL> insert into student values(&id,'&name','&addr');
+Enter value for id: 1
+Enter value for name: bhagy
+Enter value for addr: pune
+old   1: insert into student values(&id,'&name','&addr')
+new   1: insert into student values(1,'bhagy','pune')
 
 1 row created.
 
-
-SQL> insert into employee values(2,'aish','software ');
+SQL> insert into student values(&id,'&name','&addr');
+Enter value for id: 2
+Enter value for name: vandana
+Enter value for addr: khamgaon
+old   1: insert into student values(&id,'&name','&addr')
+new   1: insert into student values(2,'vandana','khamgaon')
 
 1 row created.
 
-SQL> select * from employee;
+SQL> select &col1,&col2,&col3 from student;
+Enter value for col1: id
+Enter value for col2: name
+Enter value for col3: addr
+old   1: select &col1,&col2,&col3 from student
+new   1: select id,name,addr from student
 
-     EMPID ENAME                DESIGNATION                                     
+        ID NAME                 ADDR                                            
 ---------- -------------------- --------------------                            
-         1 bhagyashri           sofetware                                       
-         2 aish                 software                                        
+         1 bhagy                pune                                            
+         2 vandana              khamgaon                                        
 
-SQL> delete from employee where empid=2;
+SQL> select &col1,&col2,&col3 from student;
+Enter value for col1: id
+Enter value for col2: name
+Enter value for col3: 
+old   1: select &col1,&col2,&col3 from student
+new   1: select id,name, from student
+select id,name, from student
+                *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select &col1,&col2 from student;
+Enter value for col1: id
+Enter value for col2: name
+old   1: select &col1,&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> select &col1,&&col2 from student;
+Enter value for col1: id
+Enter value for col2: name
+old   1: select &col1,&&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> select &col1,&&col2 from student;
+Enter value for col1: id
+old   1: select &col1,&&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> select &col1,&col2 from student;
+Enter value for col1: id
+old   1: select &col1,&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> select &col1,&col2 from student;
+Enter value for col1: id
+old   1: select &col1,&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> select &&col1,&col2 from student;
+Enter value for col1: id
+old   1: select &&col1,&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> select &&col1,&col2 from student;
+old   1: select &&col1,&col2 from student
+new   1: select id,name from student
+
+        ID NAME                                                                 
+---------- --------------------                                                 
+         1 bhagy                                                                
+         2 vandana                                                              
+
+SQL> insert into student values(&id,'&name','&addr');
+Enter value for id: 3
+Enter value for name: pooja
+Enter value for addr: jalgaon
+old   1: insert into student values(&id,'&name','&addr')
+new   1: insert into student values(3,'pooja','jalgaon')
+
+1 row created.
+
+SQL> insert into student values(&id,'&name','&addr');
+Enter value for id: 4
+Enter value for name: aish
+Enter value for addr: puna
+old   1: insert into student values(&id,'&name','&addr')
+new   1: insert into student values(4,'aish','puna')
+
+1 row created.
+
+SQL> insert into student values(&id,'&name','&addr');
+Enter value for id: 5
+Enter value for name: akhil
+Enter value for addr: vardha
+old   1: insert into student values(&id,'&name','&addr')
+new   1: insert into student values(5,'akhil','vardha')
+
+1 row created.
+
+SQL> insert into student values(&id,'&name','&addr');
+Enter value for id: 6
+Enter value for name: raj
+Enter value for addr: mumbai
+old   1: insert into student values(&id,'&name','&addr')
+new   1: insert into student values(6,'raj','mumbai')
+
+1 row created.
+
+SQL> select &col1,&col2,&col3 from student;
+Enter value for col3: id
+old   1: select &col1,&col2,&col3 from student
+new   1: select id,name,id from student
+
+        ID NAME                         ID                                      
+---------- -------------------- ----------                                      
+         1 bhagy                         1                                      
+         2 vandana                       2                                      
+         3 pooja                         3                                      
+         4 aish                          4                                      
+         5 akhil                         5                                      
+         6 raj                           6                                      
+
+6 rows selected.
+
+SQL> select &col1,&col2,&&col3 from student;
+Enter value for col3: addr
+old   1: select &col1,&col2,&&col3 from student
+new   1: select id,name,addr from student
+
+        ID NAME                 ADDR                                            
+---------- -------------------- --------------------                            
+         1 bhagy                pune                                            
+         2 vandana              khamgaon                                        
+         3 pooja                jalgaon                                         
+         4 aish                 puna                                            
+         5 akhil                vardha                                          
+         6 raj                  mumbai                                          
+
+6 rows selected.
+
+SQL> select &col1,&col2,&col3 from student;
+old   1: select &col1,&col2,&col3 from student
+new   1: select id,name,addr from student
+
+        ID NAME                 ADDR                                            
+---------- -------------------- --------------------                            
+         1 bhagy                pune                                            
+         2 vandana              khamgaon                                        
+         3 pooja                jalgaon                                         
+         4 aish                 puna                                            
+         5 akhil                vardha                                          
+         6 raj                  mumbai                                          
+
+6 rows selected.
+
+SQL> delete from table where id=6;
+delete from table where id=6
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> delete from student where id=6;
 
 1 row deleted.
 
-SQL> select * from employee;
+SQL> delete from student where name='raj';
 
-     EMPID ENAME                DESIGNATION                                     
----------- -------------------- --------------------                            
-         1 bhagyashri           sofetware                                       
+0 rows deleted.
 
-SQL> truncate table employee;
+SQL> delete from student where name='Akhil';
 
-Table truncated.
+0 rows deleted.
 
-SQL> select * from employee;
+SQL> delete from student where UPPER(name='Akhil');
+delete from student where UPPER(name='Akhil')
+                                    *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
 
-no rows selected
 
-SQL> desc employee;
+SQL> delete from student where name='Akhil';
+
+0 rows deleted.
+
+SQL> delete from student where name='akhil';
+
+1 row deleted.
+
+SQL> update student set name='snehal' where id=3;
+
+1 row updated.
+
+SQL> alter table student add marks number(4);
+
+Table altered.
+
+SQL> desc student;
  Name                                      Null?    Type
  ----------------------------------------- -------- ----------------------------
- EMPID                                     NOT NULL NUMBER(2)
- ENAME                                     NOT NULL VARCHAR2(20)
- DESIGNATION                               NOT NULL VARCHAR2(20)
+ ID                                        NOT NULL NUMBER(38)
+ NAME                                               VARCHAR2(20)
+ ADDR                                               VARCHAR2(20)
+ MARKS                                              NUMBER(4)
 
-SQL> select empid as employee_id from employee;
+SQL> selecr * from student;
+SP2-0734: unknown command beginning "selecr * f..." - rest of line ignored.
+SQL> select * from student;
 
-no rows selected
+        ID NAME                 ADDR                      MARKS                 
+---------- -------------------- -------------------- ----------                 
+         1 bhagy                pune                                            
+         2 vandana              khamgaon                                        
+         3 snehal               jalgaon                                         
+         4 aish                 puna                                            
 
-SQL> insert into employee values(1,'bhagyashri','sofetware ');
+SQL> update student set marks=90 where id=1;
 
-1 row created.
+1 row updated.
 
-SQL> insert into employee values(2,'aish,'software ');
-ERROR:
-ORA-01756: quoted string not properly terminated 
+SQL> update student set marks=80 where id=2;
+
+1 row updated.
+
+SQL> update student set marks=70 where id=3;
+
+1 row updated.
+
+SQL> update student set marks=95 where id=4;
+
+1 row updated.
+
+SQL> select * from student;
+
+        ID NAME                 ADDR                      MARKS                 
+---------- -------------------- -------------------- ----------                 
+         1 bhagy                pune                         90                 
+         2 vandana              khamgaon                     80                 
+         3 snehal               jalgaon                      70                 
+         4 aish                 puna                         95                 
+
+SQL> alter student add marks varchar(40);
+alter student add marks varchar(40)
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
 
 
-SQL> insert into employee values(2,'aish','software ');
+SQL> alter table student add marks varchar(40);
+alter table student add marks varchar(40)
+                        *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
 
-1 row created.
 
-SQL> select empid as employee_id from employee;
+SQL> alter table student modify marks varchar(40);
+alter table student modify marks varchar(40)
+                           *
+ERROR at line 1:
+ORA-01439: column to be modified must be empty to change datatype 
 
-EMPLOYEE_ID                                                                     
------------                                                                     
-          1                                                                     
-          2                                                                     
 
-SQL> select empid as employee Id from employee;
-select empid as employee Id from employee
+SQL> alter table student modify name varchar(40);
+
+Table altered.
+
+SQL> alter table student modify id varchar(40);
+alter table student modify id varchar(40)
+                           *
+ERROR at line 1:
+ORA-01439: column to be modified must be empty to change datatype 
+
+
+SQL> alter table student add id1 number(40);
+alter table student add id1 number(40)
+                                   *
+ERROR at line 1:
+ORA-01727: numeric precision specifier is out of range (1 to 38) 
+
+
+SQL> alter table student add id1 number(20);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(38)
+ NAME                                               VARCHAR2(40)
+ ADDR                                               VARCHAR2(20)
+ MARKS                                              NUMBER(4)
+ ID1                                                NUMBER(20)
+
+SQL> alter table student modify id1 varchar(20);
+
+Table altered.
+
+SQL> delete coloumn id1 from student;
+delete coloumn id1 from student
+                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> alter table student drop coloumn id1;
+alter table student drop coloumn id1
                          *
 ERROR at line 1:
-ORA-00923: FROM keyword not found where expected 
+ORA-00905: missing keyword 
 
 
-SQL> set @Employee_Id=select empid from employee;
-SP2-0735: unknown SET option beginning "@Employee_..."
-SQL> set @Employee_Id:=select empid from employee;
-SP2-0735: unknown SET option beginning "@Employee_..."
-
-
-SQL> drop table employee;
-
-Table dropped.
-
-SQL> desc employee;
-ERROR:
-ORA-04043: object employee does not exist 
-
-
-SQL> drop user bhagyashri cascade;
-drop user bhagyashri cascade
-*
+SQL> alter table student drop coloumn id1 varchar(20);
+alter table student drop coloumn id1 varchar(20)
+                         *
 ERROR at line 1:
-ORA-01940: cannot drop a user that is currently connected 
+ORA-00905: missing keyword 
 
 
-SQL> alter user bhagyashri identified by bhagya57;
+SQL> alter table student drop column id1 varchar(20);
+alter table student drop column id1 varchar(20)
+                                    *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
 
-User altered.
 
-SQL> exit
+SQL> alter table student drop column id1;
+
+Table altered.
+
+SQL> alter table student add constraint pk NOT NULL(name);
+alter table student add constraint pk NOT NULL(name)
+                                      *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> alter table student add constraint pk NULL(name);
+alter table student add constraint pk NULL(name)
+                                      *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> alter table student add constraint pk default(name);
+alter table student add constraint pk default(name)
+                                      *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> alter table student add constraint pk UNIQUE(name);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(38)
+ NAME                                               VARCHAR2(40)
+ ADDR                                               VARCHAR2(20)
+ MARKS                                              NUMBER(4)
+
+SQL> exit;
